@@ -1,0 +1,99 @@
+#home-cta {
+    display: block;
+
+    div.cta-row {
+        > div {
+            margin-bottom: 50px;
+        }
+
+        .text-cta {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shop-cta-odd, .shop-cta-even {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-cta-odd {
+            img {
+                width: 100%;
+            }
+        }
+
+        .shop-cta-even {
+            .text-cta {
+                position: relative;
+                display: block;
+            }
+
+            h4 {
+                font-size: 28px;
+                line-height: 32px;
+            }
+
+            .cta-description {
+                text-align: center;
+                > * {
+                    text-transform: lowercase;
+                    width: 100%;
+                }
+                > img {
+                    max-width: 400px;
+                }
+            }
+        }
+    }
+
+    @include breakpoint("medium") {
+        margin-top: 50px;
+
+        .reverse {
+            flex-flow: row-reverse;
+        }
+
+        div.cta-row {
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            > div {
+                margin-bottom: 0;
+            }
+
+            .shop-cta-odd, .shop-cta-even {
+                width: calc(50% - 12.5px);
+
+                .cta-description {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    text-align: left;
+                    > img {
+                        width: calc(50% - 15px);
+                    }
+                    > div {
+                        flex-basis: 40%;
+                    }
+                }
+            }
+
+            .shop-cta-even {
+                .text-cta {
+                    position: absolute;
+                    display: flex;
+                }
+            }
+        }
+    }
+}

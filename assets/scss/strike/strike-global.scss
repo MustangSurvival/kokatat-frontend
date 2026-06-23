@@ -1,0 +1,37 @@
+.strike-site {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #323232;
+    }
+    .h6-subHead-sm {
+        color: #323232;
+    }
+    .text-link, .text-link-no-arrow, .form-label {
+        color: #323232;
+    }
+    .radio-btns {
+        display: flex;
+        .form-radio {
+            // visibility: hidden;
+        }
+        .form-radio + .form-label.radio {
+            &:hover {
+                background-color: #323232;
+            }
+        }
+        .form-radio:checked + .form-label.radio {
+            background-color: #323232;
+        }
+        .form-radio + .form-label.radio + .select-line {
+            background-color: #323232;
+        }
+    }
+    /* cards */
+    .product .product-price {
+        display: none;
+    }
+}

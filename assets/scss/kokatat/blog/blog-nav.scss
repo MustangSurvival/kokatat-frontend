@@ -1,0 +1,149 @@
+#blog-filter-nav {
+  .content-container {
+    padding: none;
+  }
+
+  .nav-wrapper {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  .nav {
+    margin: 0;
+  }
+
+  .nav li {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  .blog-filter {
+    position: relative;
+    margin: 0 auto 15px;
+
+    .blog-filter-dropdown {
+      width: 100%;
+      background: #E6E6E6 url('../img/kokatat/icon-assets/DropdownArrow.svg') no-repeat;
+      background-position: 92% center;
+      background-size: 10px;
+      color: #707070;
+      height: 50px;
+      padding: 0 15px;
+    }
+
+    .blog-filter-increment {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .mobile-filter-button {
+    display: flex;
+    margin: 30px auto;
+  }
+
+  @include breakpoint("medium") {
+    .mobile-filter-button {
+      display: none;
+    }
+
+    .nav-wrapper {
+      width: 100%;
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include breakpoint("large") {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+
+      .nav {
+        min-width: fit-content;
+        display: flex;
+      }
+    }
+
+    .blog-buttons {
+      flex: 1 1 100%;
+      display: flex;
+      padding: 40px 0;
+      justify-content: center;
+
+      @include breakpoint("large") {
+        flex: 0;
+        display: flex;
+        padding: 40px 0;
+        justify-content: space-between;
+      }
+    }
+
+    .nav li {
+      width: auto;
+      padding: 0;
+      font-family: "Montserrat", sans-serif;
+      display: inline-block;
+      cursor: pointer;
+      margin-right: 30px;
+
+      .active {
+        border-bottom: 5px solid #000000;
+      }
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #000000;
+      display: block;
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+
+    .nav a:hover {
+      border-bottom: 5px solid #000000;
+      transition: all 0.3s ease;
+    }
+
+    .blog-filter {
+      position: relative;
+      margin: 0 20px;
+
+      .blog-filter-dropdown {
+        width: auto;
+        background-color: #E6E6E6;
+        color: #707070;
+        width: 220px;
+        height: 50px;
+        padding: 0 15px;
+      }
+
+      .blog-filter-increment {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

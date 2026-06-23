@@ -1,0 +1,115 @@
+﻿.blog {
+
+
+  .blog-post-feed {
+    display: flex;
+    padding: 60px 0;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    margin: -15px;
+
+    .blog-card {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      margin: 15px;
+      flex-grow: 1;
+      flex: 1 1 100%;
+      background-color: #ffffff;
+
+      @include breakpoint("medium") {
+        flex: 1 1 40%;
+      }
+
+      @include breakpoint("large") {
+        flex: 1 1 31%;
+      }
+
+      .blog-content, img {
+          width: 100%;
+      }
+
+      a.blog-card-img-link {
+        @extend .placeholder;
+      }
+
+      .blog-content {
+        padding: 45px;
+        position: relative;
+        z-index: 3;
+      }
+
+      .blog-header {
+        .blog-subhead {
+          // font-size: 18px !important;
+          color: #000000;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          letter-spacing: 0.9px;
+          text-transform: uppercase;
+          display: inline-flex;
+
+          .subhead-divider {
+            margin: 0 10px;
+            font-weight: 200;
+          }
+
+          .blog-date,
+          .tag {
+            color: #4a7322;
+            font-size: 1rem;
+
+            @include breakpoint('medium') {
+                font-size: 12px;
+            }
+
+            @include breakpoint('large') {
+                font-size: 1rem;
+            }
+          }
+        }
+
+        .blog-title {
+          margin: 0;
+          line-height: 1.1;
+        }
+      }
+
+      .overlay {
+        background-color: #000000;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        z-index: 2;
+      }
+
+      &:hover {
+          transition: all 0.3s ease-in;
+          background-color: #000000;
+
+        .overlay {
+          opacity: 0.5;
+        }
+
+        .subhead-divider, .blog-post {
+          color: #FFFFFF;
+        }
+
+        .blog-title a {
+          color: #FFFFFF;
+        }
+
+        .text-link {
+          color: #FFFFFF;
+          text-decoration-color: #FFFFFF;
+        }
+      }
+    }
+
+    .blog-post {}
+  }
+}

@@ -1,0 +1,64 @@
+#support-links {
+  .navBar-section::before, .navBar-section::after {
+    content: none;
+  }
+
+  .navBar ul.navBar-section {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      @include breakpoint("medium") {
+          flex-direction: row;
+      }
+  }
+  .navBar li.navBar-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 230px;
+      width: 100%;
+      margin: .5rem 0;
+      font-weight: 600;
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      background-size: cover;
+      background-repeat: no-repeat;
+      max-width: 400px;
+
+      a {
+        font-style: normal;
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: 1px;
+        color: #FFFFFF;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include breakpoint("medium") {
+          margin: .5rem .5rem;
+          width: 47%;
+          height: 230px;
+      }
+  }
+  .navBar a.navBar-action {
+      text-decoration: none;
+      color: #000000;
+      display: block;
+  }
+  .navBar li:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,.05);
+      transition: all 0.3s ease;
+  }
+
+  @include breakpoint("medium") {
+      margin: 3rem 0;
+  }
+}

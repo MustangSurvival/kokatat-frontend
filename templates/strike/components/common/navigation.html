@@ -1,0 +1,60 @@
+<nav class="navUser">
+    {{> components/common/currency-selector}}
+    <ul class="navUser-section navUser-section--alt">
+        <!-- SHOP -->
+        <li class="navUser-item shop">
+            <a class="navUser-action" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-products">products
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+            </a>
+          {{> strike/components/common/product-navigation}}
+        </li>
+        <li class="navUser-item pages">
+            <a class="navUser-action" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-about">about
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+            </a>
+            <nav class="navDropdown navProducts" id="desktop-nav-about">
+                <ul class="navPages-list content-container">
+                    {{#each pages}}
+                        {{#if name '==' 'Strike'}}
+                            {{#if children}}
+                                <li class="navProducts-item nav-header" id="nav-id-{{toLowerCase (hyphenate id)}}">
+                                    {{> strike/components/common/navigation-list}}
+                                </li>
+                            {{/if}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </nav>
+        </li>
+        <li class="navUser-item pages">
+            <a class="navUser-action" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-support">support
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+            </a>
+            <nav class="navDropdown navProducts" id="desktop-nav-support">
+                <ul class="navPages-list content-container">
+                    {{#each pages}}
+                        {{#if name '==' 'Strike Support'}}
+                            {{#if children}}
+                                <li class="navProducts-item nav-header" id="nav-id-{{toLowerCase (hyphenate id)}}">
+                                    {{> strike/components/common/navigation-list}}
+                                </li>
+                            {{/if}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </nav>
+        </li>
+
+        <!-- SEARCH -->
+        <!-- <li class="navUser-item search">
+            <a class="navUser-action navUser-action--quickSearch" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 37.928 38.076">
+              <path id="Icon_Search" d="M896.659,1026.829a15.184,15.184,0,0,1,11.681,24.9L918.7,1062.09a1.5,1.5,0,1,1-2.124,2.123l-10.38-10.38a15.189,15.189,0,1,1-9.54-27.005Zm0,27.387a12.148,12.148,0,0,0,8.531-3.5l.006-.01c.005-.005.012-.006.017-.011a12.182,12.182,0,1,0-8.554,3.518Z" transform="translate(-881.339 -1026.704)" stroke="#000" stroke-width="0.25"/>
+            </svg>
+          </a>
+        </li> -->
+    </ul>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" inert data-prevent-quick-search-close>
+        {{> kokatat/components/common/quick-search}}
+    </div>
+</nav>

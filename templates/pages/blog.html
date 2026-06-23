@@ -1,0 +1,28 @@
+---
+blog:
+    posts:
+        limit: 5
+        pages: 3
+        summary: 200
+---
+{{#partial "page"}}
+    <div>
+        {{> kokatat/components/blog/blog-marquee}}
+    </div>
+
+    <main class="page">
+        <!-- POSTS FILTER NAV -->
+        {{> kokatat/components/blog/blog-filter-nav}}
+
+        <div id="blog-page">
+            <!-- POSTS FEED -->
+            {{> kokatat/components/blog/blog-post}}
+        </div>
+    </main>
+
+    <div id="component_templates" hidden>
+        {{> kokatat/components/blog/card}}
+        {{> kokatat/components/blog/featured-story}}
+    </div>
+{{/partial}}
+{{> layout/base}}

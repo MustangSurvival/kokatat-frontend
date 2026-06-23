@@ -1,0 +1,158 @@
+header.header {
+  // border-top: 5px solid stencilColor("color-primaryLight");
+  border-bottom: none;
+  /*height: 110px;*/
+  padding: 1.5rem 0;
+  padding-bottom: 0rem;
+  z-index: zIndex("highest");
+  margin-top: 0 !important;
+  @include breakpoint("medium") {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-logo {
+    order: 1;
+    margin: 0;
+    margin-right: auto;
+    z-index: zIndex("higher");
+    > a {
+      padding: 0;
+    }
+    @include breakpoint("medium") {
+      padding: 0;
+      display: inline-block;
+      width: 146px;
+      height: auto;
+      .header-logo-image {
+        bottom: 6px;
+        img {
+          width: 146px;
+          height: auto;
+        }
+      }
+    }
+  }
+  .navPages-container {
+    background: stencilColor("header-backgroundColor");
+    @include breakpoint("medium") {
+      position: absolute;
+      order: 2;
+      align-self: center;
+      padding: 22px 0;
+      // @include boxShadow();
+    }
+  }
+  .navUser {
+    order: 3;
+    right: 55px;
+    width: auto;
+    z-index: zIndex("higher");
+    @include breakpoint("medium") {
+      display: inline-block;
+      position: unset;
+      margin-left: auto;
+    }
+  }
+  .mobileMenu-toggle {
+    right: 4px;
+    left: unset;
+  }
+
+  // page navigation styles
+  .navPages-container {
+    a.navPages-action {
+      @include breakpoint("medium") {
+        font-size: 14px;
+        position: relative;
+        padding: 10px;
+        margin: 15px 20px;
+        letter-spacing: 0.28px;
+        &.has-subMenu {
+          // remove arrow to match mockup
+          i {
+            display: none;
+          }
+          // position and style submenu
+          + .navPage-subMenu.is-open {
+            border-top: 1px solid stencilColor("color-greyDarker");
+            @include breakpoint("medium") {
+              top: 115px;
+            }
+          }
+        }
+
+        // submenu link styles
+        &.navPage-subMenu-action {
+          font-weight: 400;
+          font-size: 16px;
+          margin: 0;
+          position: relative;
+          padding: 17px;
+          // adjust hover / active link indicator for subnav items
+          &:after {
+            bottom: 0;
+            margin: 0;
+            display: none;
+          }
+          &:hover {
+            color: stencilColor("navPages-color-hover");
+            background-color: stencilColor("navUser-dropdown-backgroundColor");
+          }
+        }
+      }
+    }
+    .navPage-subMenu.is-open {
+      @include breakpoint("medium") {
+        // @include boxShadow();
+        padding: 3px 0 27px !important; // only important to override BC default !important
+      }
+    }
+  }
+  // user navigation Styles
+  .navUser-action--quickSearch {
+  }
+  #mobile-quicksearch {
+    margin-top: 1.5rem;
+    .form-input {
+      height: 3.5rem;
+    }
+  }
+
+  .navUser {
+    // hover / active link indicator
+    &:after {
+      content: " ";
+      transition: all 0.15s linear;
+      background-color: transparent;
+      height: 5px;
+      width: auto;
+      margin: 0 10px;
+      position: absolute;
+      bottom: -37px;
+      left: 0;
+      right: 0;
+      display: none;
+    }
+    &.activePage,
+    &.is-open {
+      color: stencilColor("color-primaryLight");
+      &:after {
+        background-color: stencilColor("color-primaryLight");
+      }
+    }
+    &:hover {
+      color: stencilColor("color-primaryLight");
+      &:after {
+        background-color: stencilColor("color-primary");
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<a class="h6-subHead-sm navPages-action has-subMenu" href="{{url}}">
+    {{name}}
+    <span class="toggle-indicator"></span>
+</a>
+<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+    <ul class="navPage-subMenu-list">
+        <li class="navPage-subMenu-item all">
+            <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+        </li>
+        {{#each children}}
+            <li class="navPage-subMenu-item">
+                    <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

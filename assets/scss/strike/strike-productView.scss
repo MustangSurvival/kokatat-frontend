@@ -1,0 +1,131 @@
+.strike-site {
+    li.breadcrumb:nth-child(1) {
+        display: none;
+    }
+    li.breadcrumb:nth-child(2)::before {
+        display: none;
+    }
+    .productView {
+        .productView-details .productView-product .productView-rating .productView-reviewLink {
+            color: #323232;
+        }
+        .options-bottom {
+            .share-container {
+                color: #323232;
+            }
+        }
+        .socialLinks .icon svg, .icon--ratingFull svg {
+            fill: #323232;
+        }
+        .productView-reviewLink > a {
+            color: #323232;
+        }
+        .productView-price {
+            display: none;
+        }
+        .productView-options {
+            .button--primary {
+                padding: 0;
+                a {
+                    height: 100%;
+                    width: 100%;
+                    padding: 1.3rem 2rem;
+
+                }
+                &:hover {
+                    &:after {
+                        content:'';
+                    }
+                    a:after {
+
+                        content:url('../img/kokatat/icon-assets/Icon_PrimaryArrow.svg');
+                        margin-left: 5px;
+
+                    }
+                }
+            }
+            @include breakpoint("small") {
+                .button--primary {
+                    width: 60%;
+                    margin: 0;
+                }
+            }
+        }
+        .options-right {
+            display: none;
+        }
+    }
+    
+    .productNav-container {
+        background-color: #323232;
+    }
+
+    .productNav {
+        background-color: #323232;
+    }
+    #feature_blocks {
+        .video-link svg {
+            fill: #323232;
+        }
+        .feature-2 {
+            .content {
+                background-color: #323232;
+            }
+            .triangle {
+                border-top: 30px solid #323232;
+                border-top: 30px solid transparent;
+                border-bottom: 30px solid transparent;
+            }
+        }
+        @include breakpoint("small") {
+            .feature-2 {
+                .triangle {
+                    border-right: 30px solid #323232;
+                    border-top: 30px solid transparent;
+                    border-bottom: 30px solid transparent;
+                }
+            }
+        }
+    }
+    #tech_specs, #sizing {
+
+        @include breakpoint("medium") {
+            background-color: #F2F2F2;
+        }
+    }
+    #sizing {
+        .heading-container {
+            .size-toggle-link {
+                color: #323232;
+                &.active {
+                    border-bottom: 6px solid #323232;
+                    &:hover {
+                        color: #323232;
+                    }
+                }
+            }
+        }
+        .chart-heading {
+            background-color: #323232;
+        }
+        .chart-body {
+            tr {
+                border-bottom: 1px solid #E6E6E6;
+                td:first-child {
+                    color: #323232;
+                }
+            }
+        }
+    }
+    .productReviews {
+        .productReview-author {
+            color: #323232;
+        }
+    }
+    .related-products {
+        background-color: #F2F2F2;
+        .heading {
+            border-bottom: 6px solid #323232;
+        }
+    }
+}

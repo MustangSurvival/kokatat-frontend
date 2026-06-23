@@ -1,0 +1,67 @@
+#strike-home-nav {
+  .content-container {
+    padding: none;
+  }
+
+  .nav ul.nav-list {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 2rem 0;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      @include breakpoint("medium") {
+          flex-direction: row;
+      }
+  }
+  .nav li.list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      margin: .5rem 0rem;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "Montserrat", sans-serif;
+      background-color: #F2F2F2;
+      cursor: pointer;
+
+      @include breakpoint("medium") {
+          margin: .5rem 1rem;
+          width: 20%;
+          height: 80px;
+          &:first-child {
+             margin-left: 0;
+          }
+          &:last-child {
+             margin-right: 0;
+          }
+      }
+  }
+  .nav a {
+      text-decoration: none;
+      color: #000000;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: lowercase;
+  }
+  .nav li:hover {
+      background-color: #948E7D;
+      color: #FFFFFF;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      a {
+          color: #FFFFFF;
+      }
+  }
+
+  @include breakpoint("medium") {
+      margin: 3rem 0;
+  }
+
+}

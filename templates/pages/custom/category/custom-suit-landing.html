@@ -1,0 +1,79 @@
+---
+category:
+shop_by_price: true
+description: true
+products:
+limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+  {{#if pagination.category.previous}}
+    <link rel="prev" href="{{pagination.category.previous}}">
+  {{/if}}
+  {{#if pagination.category.next}}
+    <link rel="next" href="{{pagination.category.next}}">
+  {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+  <!-- <h4 class="content-container" style="letter-spacing: 5px; margin: 5px auto;">CUSTOM SUIT CONFIGURATOR</h4> -->
+  <section id="custom_marquee" class="heroCarousel">
+
+  </section>
+  <div class="page custom-landing" style="background-color: #F2F2F2;">
+    <div id="cs-landing">
+      <div class="cs-landing-container">
+      <div class="content-container">
+        <div class="cs-landing-copy">
+          {{#if page.sub_pages}}
+            <div id="cs-landing-links">
+              <nav class="navBar navBar--sub">
+                <ul class="navBar-section account-navigation">
+                  {{#each page.sub_pages}}
+                    <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                  {{/each}}
+                </ul>
+              </nav>
+            </div>
+          {{/if}}
+          <div class="cs-landing-content">
+            <div class="custom-video embed-responsive"></div>
+            <div class="copy-content"></div>
+          </div>
+        </div>
+        <div id="how-it-works" class="cs-landing-panel-container">
+          {{> kokatat/components/cs-landing/cs-landing-panel}}
+        </div>
+      </div>
+      </div>
+      <div id="cusotm_suit_grid_wrapper">
+        <div class="content-container" id="csl-subheader">
+          <h2>SELECT A SUIT TO CUSTOMIZE</h2>
+          <hr style="margin: 10px 0; border-top: 6px solid #000000;">
+        </div>
+        <div class="content-container">
+          <div class="cs-landing-feed-container">
+            <main class="page-content" id="product-listing-container">
+              {{#if category.products}}
+                {{> components/category/product-listing}}
+              {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+              {{/if}}
+              {{{region name="category_below_content"}}}
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="component_templates" hidden>
+    {{> kokatat/components/marquee-slide}}
+    <div id="productCarousel">
+      {{> kokatat/components/product-carousel}}
+    </div>
+  </div>
+
+{{/partial}}
+
+{{> layout/base}}

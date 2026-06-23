@@ -1,0 +1,31 @@
+{{#partial "page"}}
+    {{inject 'productData' product}}
+
+    <div class="productView" itemscope itemtype="http://schema.org/Product">
+        {{> kokatat/components/products/custom-suits/product-view schema=true  }}
+    </div>
+    <div id="pdf_messaging">
+        Generating PDF. Please wait...
+    </div>
+    <script id="lcly-script-0" async></script>
+    <script id="lcly-config-0">
+      var lcly_config_0 = {
+        "company_name": "Kokatat",
+        "button_text": "Buy From A Dealer",
+        "button_id": "HTML",
+        "company_id": "1450",
+        "color_0": "#000000",
+        "style": location.pathname.split('/')[1].split('-')[location.pathname.split('/')[1].split('-').length - 1].toUpperCase(),
+        "n_related_styles": "3",
+        "lang": "en-us",
+        "n_dealers": "3",
+        "no_link": "1"
+      };
+      var lcly_query_0 = Object.keys(lcly_config_0)
+      .reduce(function(a,k){a.push(encodeURIComponent(k) + '='
+      + encodeURIComponent(lcly_config_0[k]));return a},[]).join('&');
+      var lcly_endpoint_0 = 'https://Kokatat.locally.com/stores/map.js?' + lcly_query_0;
+      document.getElementById('lcly-script-0').src = lcly_endpoint_0;
+    </script>
+{{/partial}}
+{{> layout/custom-suit}}

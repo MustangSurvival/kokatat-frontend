@@ -1,0 +1,124 @@
+<article id="blog-article">
+
+    <div style="position: relative;">
+        <img class="blog-article-marquee" alt="" title="" src="">
+        <div class="placeholder">
+          <canvas height="450" width="1480"></canvas>
+        </div>
+        <div class="blog-intro-block content-container">
+            <img class="blog-intro-block-image" src="" alt="" hidden>
+            <div class="placeholder">
+              <canvas height="408" width="461"></canvas>
+            </div>
+            <div class="blog-intro-block-wrapper">
+                <div class="blog-intro-block-content">
+                    <header class="blog-intro-block-header">
+                        <h2 class="blog-intro-block-title">
+                            {{post.title}}
+                        </h2>
+                        <div class="blog-intro-block-subhead">
+                            <div class="sport"></div>
+                            <div class="date">{{post.date_published}}</div>
+                            <div class="author" hidden>by <span class="value"></span></div>
+                        </div>
+                        <div class="blog-intro-block-teaser"></div>
+                        <div class="social-media">
+                            <span class="label">Share:</span>
+                            {{>components/common/share}}
+                        </div>
+                    </header>
+                    <div class="blog-intro-author-content" hidden>
+                        <div class="profile-photo" style="background-image: url('')">
+                            <img src="" title="" alt="" hidden>
+                        </div>
+                        <div class="profile-info">
+                            <div class="name">by <span class="value"></span></div>
+                            <p class="short-bio"></p>
+                            <a href class="read-more" target="_blank" hidden>read more</a>
+                        </div>
+                        <div class="author-links" hidden>
+                            <ul class="social-links">
+                                <li class="facebook" hidden><a href="" target="_blank"><svg><use xlink:href="#icon-facebook"></use></svg></a></li>
+                                <li class="twitter" hidden><a href="" target="_blank"><svg><use xlink:href="#icon-twitter"></use></svg></a></li>
+                                <li class="instagram" hidden><a href="" target="_blank"><svg><use xlink:href="#icon-instagram"></use></svg></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="content-container" id="blog-space" hidden>
+  <h2 class="et-title" hidden>THE TEAM</h2><br>
+  <div class="expeditions-team" hidden>
+    <div class="blog-expeditions-team" hidden>
+      <img src="" title="" alt="">
+      <a href target="_blank" class="link-text"><div class="name"></div></a>
+    </div>
+  </div>
+  
+  <div class="expeditions-quote" style="background: #000000 0% 0% no-repeat; padding: 20px;" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="58" viewBox="0 0 56 58">
+      <text id="Icon_QuoteMark" fill="#707070" font-size="100" font-family="Gotham-Ultra, Gotham">
+        <tspan x="0" y="80">“</tspan>
+      </text>
+    </svg>
+    <br>
+    <div class="pullquote"><span></span></div>
+  </div>
+</section>
+    
+    
+    <div class="blog-post-body">
+      
+        <div class="blog-post">
+
+        </div>
+
+        <div class="blog-post-video"></div>
+
+        <div class="blog-post-photo-gallery" hidden>
+            <ul class="blog-post-gallery-carousel content-container single-image-gallery" data-slick='{
+                "mobileFirst": true,
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "arrows": true,
+                "infinite": true,
+                "dots": false,
+                "adaptiveHeight": true
+            }'>
+            </ul>
+        </div>
+    </div>
+
+    <div class="blog-post-photo-grid" hidden>
+        <div class="photo-grid-row-one">
+            <div class="photo-grid-top-landscape-image" style="background-image: url('');">
+                <img src="" alt="" title="" />
+            </div>
+            <div class="photo-grid-quote pullquote-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="58" viewBox="0 0 56 58">
+                    <text id="Icon_QuoteMark" fill="#707070" font-size="100" font-family="Gotham-Ultra, Gotham">
+                        <tspan x="0" y="80">“</tspan>
+                    </text>
+                </svg>
+                <p><span class="pullquote"></span></p>
+            </div>
+        </div>
+        <div class="photo-grid-row-two">
+            <div class="photo-grid-caption">
+                <svg class="camera"><use xlink:href="#icon-camera"></use></svg>
+                <h4>Photo Caption</h4>
+                <p class="caption"></p>
+            </div>
+            <div class="photo-grid-bottom-portrait-image" style="background-image: url('');">
+                <img src="" alt="" title="" />
+            </div>
+            <div class="photo-grid-bottom-landscape-image" style="background-image: url('');">
+                <img src="" alt="" title="" />
+            </div>
+        </div>
+    </div>
+
+</article>

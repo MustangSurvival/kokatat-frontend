@@ -1,0 +1,45 @@
+.strike-home #home-banner {
+
+    .banners {
+      background-color: #323232;
+
+        .text-link {
+            color: #FFFFFF;
+        }
+
+        .banner {
+
+            .home-body-banner {
+                display: block;
+                padding: 30px;
+
+                @include breakpoint("medium") {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .banner-cta {
+                    font-size: 28px;
+                    color: #948E7D;
+                    font-family: "PFDinDisplayPro-Bold", sans-serif;
+                    letter-spacing: 0;
+                    text-transform: uppercase;
+                    text-align: center;
+                }
+
+                p {
+                    @include breakpoint("medium") {
+                        margin: 0 2rem;
+                    }
+                }
+
+                .text-link {
+                    @include breakpoint("medium") {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

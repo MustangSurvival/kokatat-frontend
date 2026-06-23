@@ -1,0 +1,96 @@
+#cart-styling {
+    margin-bottom: 3rem;
+    @extend .content-container;
+    .cart-actions {
+        margin-bottom: 30px;
+        .button--primary {
+            width: 100%;
+        }
+    }
+    .cart-header-item {
+        font-size: 14px;
+        letter-spacing: 0.7px;
+        color: #000000;
+        font-family: "Montserrat", sans-serif!important;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    .cart-totals {
+        .cart-total {
+            .cart-total-label, .cart-total-value, button {
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                color: #000000;
+                font-family: "Montserrat", sans-serif!important;
+                font-weight: 600;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            &:last-child {
+                .cart-total-label, .cart-total-value {
+                    font-size: 18px;
+                    font-family: "Montserrat", sans-serif!important;
+                    font-weight: 600;
+                    letter-spacing: 0.9px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    @include breakpoint("small") {
+        .cart-actions {
+            .button--primary {
+                width: 50%;
+            }
+        }
+        .paypal-smart-buttons {
+            width: 50%;
+        }
+    }
+    @include breakpoint("medium") {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        table.cart {
+            margin-top: 80px;
+            .cart-list {
+                .cart-item-image {
+                    max-width: 100%;
+                }
+                .cart-item-quantity {
+                    .button {
+                        border-radius: 0;
+                        border: 0;
+                        background-color: #f2f2f2;
+                    }
+                }
+            }
+        }
+        .cart-actions {
+            .button--primary {
+                width: grid-calc(7, $total-columns);
+            }
+        }
+        .paypal-smart-buttons {
+            width: 25%;
+        }
+    }
+    @include breakpoint("large") {
+        table.cart {
+            .cart-list {
+                .cart-item-image {
+                    max-width: 100px;
+                }
+            }
+        }
+        .cart-actions {
+            .button--primary {
+                width: 42%;
+            }
+        }
+    }
+}
+
+#modal, .modal {
+    background-color: #fff;
+}

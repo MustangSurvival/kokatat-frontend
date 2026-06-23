@@ -1,0 +1,173 @@
+<div id="modal-sizing-form" class="modal" data-reveal>
+    <div class="modal-header">
+        <h2 class="modal-header-title"></h2>
+    </div>
+    <div class="modal-body">
+        <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+            <span aria-hidden="true">&#215;</span>
+            &nbsp;
+            <span class="modal-close-text">use standard sizing instead</span>
+        </a>
+        <div id="size_input" class="">
+            <div class="sizing-header">
+                <h3>Sizing Calculator</h3>
+                <div id="system_of_measurement">
+                {{#each product.options}}
+                    {{#if this.type '==' 'Configurable_PickList_Set'}}
+                        {{#if (occurrences this.display_name "Units") '==' 1}}
+                            {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                        {{/if}}
+                    {{/if}}
+                {{/each}}
+                </div>
+            </div>
+            <p>Enter your measurements for each of the values below and we'll suggest the best size for you, complete with recommended adjustments.
+            <ul>
+            {{#each product.options}}
+                {{#if this.type '==' 'Configurable_Entry_NumbersOnlyText'}}
+                <li>
+                    <a href="#" class="ui-selector"><div><span class="label"><i></i>{{this.display_name}}</span><span class="value"></span></div></a>
+                    <div class="ui-options">
+                        <div class="size-input-wrapper">
+                            <div class="demonstration-image">
+                                {{#if display_name '==' 'Chest'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-chest.jpg'}}" alt="Measure Chest">
+                                {{/if}}
+                                {{#if display_name '==' 'Waist'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-waist.jpg'}}" alt="Measure Waist">
+                                {{/if}}
+                                {{#if display_name '==' 'Girth'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-girth.jpg'}}" alt="Measure Girth">
+                                {{/if}}
+                                {{#if display_name '==' 'Hips'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-hips.jpg'}}" alt="Measure Hips">
+                                {{/if}}
+                                {{#if display_name '==' 'Inseam'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-inseam.jpg'}}" alt="Measure Inseam">
+                                {{/if}}
+                                {{#if display_name '==' 'Sleeve'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-sleeve.jpg'}}" alt="Measure Sleeve">
+                                {{/if}}
+                                {{#if display_name '==' 'Height'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-height.jpg'}}" alt="Measure Height">
+                                {{/if}}
+                                {{#if display_name '==' 'Weight'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-weight.jpg'}}" alt="Measure Weight">
+                                {{/if}}
+                                {{#if display_name '==' 'Shoe Size'}}
+                                <img src="{{cdn 'img/kokatat/sizing/cp-measure-shoe-size.jpg'}}" alt="Measure Shoe Size">
+                                {{/if}}
+                            </div>
+                            <div class="instructions-input">
+                                <h3>{{display_name}}</h3>
+                                {{#if display_name '==' 'Chest'}}
+                                <p>Measure at the widest point.  This may be at the nipple area or under the armpits across the upper chest. Use the larger of the two measurements.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Waist'}}
+                                <p>Measure just above your hip bone wher your body bends when bending sideways.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Girth'}}
+                                <p>Measure from the base of the neck on top of the shoulder, Down the front, through the crotch and up the back to the starting point on top of the shoulder.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Hips'}}
+                                <p>Take this measurement from the side to ensure the correct placement. Measure around the hip at the widest point of the buttocks.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Inseam'}}
+                                <p>Stand with legs straight and feet 12 inches apart. Place tape snug against the top of the crotch. Stretch the tape straight down the leg to the ankle bone.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Sleeve'}}
+                                <p>Hold bent arm parallel to floor with hand in front of nose. Measure from the spine at the base of the neck, out around elbow and back to the wrist bone.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Height'}}
+                                <p>Measure your height standing up straight against a wall with bare feet.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Weight'}}
+                                <p>Weigh yourself without layering or gear on.</p>
+                                {{/if}}
+                                {{#if display_name '==' 'Shoe Size'}}
+                                <p>Use your standard shoe size.</p>
+                                {{/if}}
+
+                                <div class="input-wrapper" data-size-item="{{toLowerCase (hyphenate display_name)}}">
+                                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                    <span class="uom-indicator">
+                                        {{#if (occurrences 'Chest,Waist,Girth,Hips,Inseam,Sleeve,Height' display_name) '==' 1}}
+                                            in
+                                        {{else}}
+                                            {{#if display_name '==' 'Weight'}}
+                                            lbs
+                                            {{/if}}
+                                        {{/if}}
+                                    </span>
+                                </div>
+                                <button class="text-link">
+                                {{#if display_name '==' 'Shoe Size'}}
+                                    complete
+                                {{else}}
+                                    Next
+                                {{/if}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{/if}}
+            {{/each}}
+            </ul>
+            <button type="button" class="kok-btn btn-arrow primary-button" disabled>GET MY SIZE</button>
+        </div>
+        <div id="size_recommendation" class="hidden">
+            <div id="size_recommendation_copy">
+                <h3>Your Custom Size Recommendation</h3>
+                <p>This is our recommendation to you based on the measurements you input. You can adjust further for the perfect custom fit.</p>
+                <button type="button" class="kok-btn btn-arrow primary-button">Accept Measurements</button>
+                <button type="button" class="text-link">Adjust Measurements</button>
+            </div>
+            <div id="size_recommendation_values">
+            {{#each product.options}}
+                {{#if this.type '==' 'Configurable_PickList_Set'}}
+                    {{#if (occurrences this.display_name "Size") '==' 1}}
+                        <div class="size-item" data-option="{{toLowerCase (hyphenate display_name)}}">
+                            <span>{{display_name}}</span>
+                            <div class="ui-button-group">
+                            {{#each this.values}}
+                                <button type="button" data-label="{{toLowerCase (snakecase label)}}" {{#if label '==' 'None'}}disabled{{/if}}>{{label}}</button>
+                            {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if (occurrences this.display_name "Adjustment") '==' 1}}
+                        <div class="size-item range" data-option="{{toLowerCase (hyphenate display_name)}}">
+                            <span>{{#replace " Adjustment" this.display_name}}{{/replace}}</span>
+                            <div class="range-wrapper">
+                                <input type="range" min="1" max="{{length this.values}}" step="1" class="" value="{{#each this.values}}{{#if this.selected}}{{add @index 1}}{{/if}}{{/each}}">
+                                <div class="range-labels">
+                                    {{#each this.values}}
+                                    <span class="range-label" data-value="{{add @index 1}}">
+                                        {{#and (if @index '>' 0) (if this.label '===' 'Standard')}}
+                                            <span style="position: absolute; left: -24px;">{{label}}</span>
+                                        {{else}}
+                                            {{label}}
+                                        {{/and}}
+                                    </span>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if (occurrences this.display_name "Gasket") '==' 1}}
+                        <div class="size-item" data-option="{{toLowerCase (hyphenate display_name)}}">
+                            <span>{{display_name}}</span>
+                            <div class="ui-button-group">
+                            {{#each this.values}}
+                                <button type="button">{{label}}</button>
+                            {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

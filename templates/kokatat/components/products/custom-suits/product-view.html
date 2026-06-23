@@ -1,0 +1,367 @@
+<div id="custom_product_header_nav">
+    <div class="content-container">
+        <div class="nav-section">
+            <h3 class="productView-title">{{product.title}}</h3>
+            <a id="how_it_works_link" href="/custom/#how-it-works">how it works</a>
+        </div>
+        <div class="nav-section">
+            <div>
+                <div class="price">
+                {{#if product.call_for_price}}
+                    <p class="productView-price">
+                        <span>{{product.call_for_price}}</span>
+                    </p>
+                {{/if}}
+                    <div class="productView-price">
+                        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            {{> components/products/price price=product.price schema_org=schema}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+                </div>
+                <span>with <a href="#" id="current_selections">current selections</a></span>
+            </div>
+            <div>
+                <button id="summary_button" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24.192" height="30" viewBox="0 0 24.192 30">
+                        <g transform="translate(-741.334 -1312.783)">
+                            <g transform="translate(741.334 1312.783)">
+                                <path d="M762.872,1342.783H743.989a2.658,2.658,0,0,1-2.655-2.655v-24.691a2.658,2.658,0,0,1,2.655-2.655h18.883a2.657,2.657,0,0,1,2.655,2.655v24.691A2.657,2.657,0,0,1,762.872,1342.783Zm-18.883-27.725a.384.384,0,0,0-.379.379v24.691a.384.384,0,0,0,.379.379h18.883a.384.384,0,0,0,.379-.379v-24.691a.384.384,0,0,0-.379-.379Z" transform="translate(-741.334 -1312.783)" fill="#e6e6e6"/>
+                            </g>
+                            <g transform="translate(746.595 1319.577)">
+                                <path d="M756.2,1324.016h-6.794a1.138,1.138,0,0,1,0-2.275H756.2a1.138,1.138,0,0,1,0,2.275Z" transform="translate(-748.27 -1321.741)" fill="#e6e6e6"/>
+                            </g>
+                            <g transform="translate(746.595 1324.344)">
+                                <path d="M760.694,1330.3H749.408a1.138,1.138,0,0,1,0-2.275h11.286a1.138,1.138,0,0,1,0,2.275Z" transform="translate(-748.27 -1328.026)" fill="#e6e6e6"/>
+                            </g>
+                            <g transform="translate(746.649 1329.111)">
+                                <path d="M760.767,1336.586H749.48a1.138,1.138,0,0,1,0-2.275h11.287a1.138,1.138,0,0,1,0,2.275Z" transform="translate(-748.342 -1334.311)" fill="#e6e6e6"/>
+                            </g>
+                            <g transform="translate(746.595 1333.878)">
+                                <path d="M760.694,1342.871H749.408a1.138,1.138,0,0,1,0-2.275h11.286a1.138,1.138,0,0,1,0,2.275Z" transform="translate(-748.27 -1340.596)" fill="#e6e6e6"/>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="custom_product_ui">
+    <div class="inner-wrapper">
+        <form id="custom_product_form" class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="product_id" value="{{product.id}}"/>
+            <ul id="ui_accordion" class="accordion" data-accordion data-product-option-change>
+                <li id="base_options" class="accordion-item is-open" data-accordion-item>
+                    <a href="#choose-your-colors" class="accordion-title">
+                        Choose Your Colors
+                        <span>
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="12" height="14">
+                                <path fill="#9B9B9B" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                    <div id="choose-your-colors" class="accordion-content" data-tab-content>
+                        <div id="custom_base_ui_buttons" class="custom-ui-button-wrapper">
+                            <button type="button" name="select_base" class="custom-ui-button active"><span><ins>Choose a </ins>stock<ins> color</ins></span></button>
+                            <button type="button" name="select_custom" class="custom-ui-button"><span><ins>Choose </ins>custom <ins>colors </ins></span></button>
+                        </div>
+                        <div id="base_stock" class="ui-section visible">
+                            <ul>
+                                {{#each product.options}}
+                                    {{#if this.type '==' 'Configurable_PickList_Swatch'}}
+                                        {{#if this.display_name '==' 'Base'}}
+                                            <li>
+                                                <a href="#" class="ui-selector active" data-summary-attribute="{{this.display_name}}"><div><span class="label"><i></i>{{this.display_name}}</span><span class="value"></span></div></a>
+                                                <div class="ui-options visible">
+                                                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                                </div>
+                                            </li>
+                                        {{/if}}
+                                    {{/if}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div id="base_customize" class="ui-section">
+                            <ul>
+                                {{#each product.options}}
+                                    {{#if this.type '==' 'Configurable_PickList_Swatch'}}
+                                        {{#if (occurrences this.display_name "Base") '==' 0}}
+                                            {{#if (occurrences this.display_name "Color") '==' 0}}
+                                            <li>
+                                                <a href="#" class="ui-selector" data-summary-attribute="{{this.display_name}}"><div><span class="label"><i></i>{{this.display_name}}</span><span class="value"></span></div></a>
+                                                <div class="ui-options">
+                                                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                                </div>
+                                            </li>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/if}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li id="feature_options" class="accordion-item" data-accordion-item>
+                    <a href="#add-and-customize-features" class="accordion-title">
+                        Add and Customize Features
+                        <span>
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="12" height="14">
+                                <path fill="#9B9B9B" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                    <div id="add-and-customize-features" class="accordion-content" data-tab-content>
+                        <div id="addon_options" class="ui-section visible">
+                            <div id="checkbox_items" hidden>
+                            {{#each product.options}}
+                                {{#and (if this.type '==' 'Configurable_Entry_Checkbox') (if this.display_name '!=' 'Accepted Terms')}}
+                                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                {{/and}}
+                            {{/each}}
+                            </div>
+                            <ul>
+                            {{#each product.options}}
+                                {{#and (if this.type '==' 'Configurable_Entry_Checkbox') (if this.display_name '!=' 'Accepted Terms')}}
+                                    {{#if (occurrences "Hood,Left Pocket,Right Pocket,Cordura Bottoms,Lower Alteration,Relief Zipper,Relief Zipper Cover,Drop Seat,Socks" this.display_name) '==' 0}}
+                                    <li class="addon-checkbox-image">
+                                        <a href="#" class="ui-selector" data-summary-attribute="{{this.display_name}}"><div><span class="label"><i class="{{#if this.checked}}enabled{{/if}}"></i>{{display_name}}<!-- <br><em class="up-charge">(+$xx)</em> --></span><span class="value"></span></div></a>
+                                        <div class="ui-options">
+                                            <div class="checkbox-facade" data-addon="{{display_name}}" data-attribute="{{id}}">
+                                                <button type="button" class="facade-button add-component-button" {{#if this.checked}}disabled{{/if}}>+ add</button>
+                                                <button type="button" class="facade-button remove-component-button" {{#unless this.checked}}disabled{{/unless}}>&times; remove</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {{/if}}
+                                {{/and}}
+                                {{#if this.type '==' 'Configurable_PickList_Swatch'}}
+                                    {{#if (occurrences this.display_name "Color") '==' 1}}
+                                    <li>
+                                        <a href="#" class="ui-selector" data-summary-attribute="{{#replace ' Color' this.display_name}}{{/replace}}"><div><span class="label"><i></i>{{#replace " Color" this.display_name}}{{/replace}}<!-- <br><em class="up-charge">(+$xx)</em> --></span><span class="value"></span></div></a>
+                                        <div class="ui-options">
+                                            <div class="checkbox-facade" data-addon="{{#replace ' Color' this.display_name}}{{/replace}}" data-attribute="{{id}}">
+                                                <button type="button" class="facade-button add-component-button">+ add</button>
+                                                <button type="button" class="facade-button remove-component-button" disabled>&times; remove</button>
+                                            </div>
+                                            {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                        </div>
+                                    </li>
+                                    {{/if}}
+                                {{/if}}
+                                {{#if this.type '==' 'Configurable_PickList_Set'}}
+                                    {{#if (occurrences "Units,Size,Inseam Adjustment,Sleeve Adjustment,Torso Adjustment,Neck Gasket,Wrist Gaskets,Socks,Sock Size,Drop Seat"  this.display_name) '==' 0}}
+                                    <li class="addon-radio-image">
+                                        <a href="#" class="ui-selector" data-summary-attribute="{{this.display_name}}"><div><span class="label"><i></i>{{this.display_name}}<!-- <br><em class="up-charge">(+$xx)</em> --></span><span class="value"></span></div></a>
+                                        <div class="ui-options">
+                                            {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                        </div>
+                                    </li>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}}
+                                <li class="multi-radio-addons" id="lower-alteration">
+                                    <a href="#" class="ui-selector" data-summary-attribute="Lower Alteration"><div><span class="label"><i></i>Relief Zippers &amp; Socks<!-- <br><em class="up-charge">(+$xx)</em> --></span><span class="value"></span></div></a>
+                                    <div class="ui-options" id="lower-alteration-options" style="justify-content: flex-start">
+                                    {{#each product.options}}
+                                        {{#if (occurrences "Relief Zipper,Relief Zipper Cover,Drop Seat,Socks" this.display_name) '>' 0}}
+                                            {{#if this.type '==' 'Configurable_Entry_Checkbox'}}
+                                            <div class="checkbox-facade with-label" data-addon="{{display_name}}" data-attribute="{{id}}" data-summary-attribute="{{display_name}}">
+                                                <span class="label"><i class="{{#if this.checked}}enabled{{/if}}"></i>{{display_name}}</span>
+                                                <button type="button" class="facade-button add-component-button" {{#if this.checked}}disabled{{/if}}>+ add</button>
+                                                <button type="button" class="facade-button remove-component-button" {{#unless this.checked}}disabled{{/unless}}>&times; remove</button>
+                                            </div>
+                                            {{else if this.type '==' 'Configurable_PickList_Set'}}
+                                                {{#inArray (pluck this.values 'label') 'None'}}
+                                                <div class="radio-facade-wrapper">
+                                                    <div class="radio-facade with-label" data-addon="{{display_name}}" data-attribute="{{id}}" data-summary-attribute="{{display_name}}">
+                                                        <span class="label"><i class="{{#if this.checked}}enabled{{/if}}"></i>{{display_name}}</span>
+                                                        <button type="button" class="facade-button remove-component-button" {{#unless this.checked}}disabled{{/unless}}>&times; remove</button>
+                                                        <button type="button" class="facade-button add-component-button" disabled="true">+ add</button>
+                                                    </div>
+                                                    <div class="radio-facade-form-fields">
+                                                        <div class="form-field" data-product-attribute="set-radio">
+                                                            <label class="form-label form-label--alternate form-label--inlineSmall">
+                                                                {{ this.display_name }}:
+
+                                                                {{#if required}}
+                                                                    <small>{{lang 'common.required'}}</small>
+                                                                {{/if}}
+                                                            </label>
+                                                        {{#each this.values}}
+                                                            <input
+                                                                class="form-radio"
+                                                                type="radio"
+                                                                id="attribute_radio_{{../id}}_{{id}}"
+                                                                name="attribute[{{../id}}]"
+                                                                value="{{id}}"
+                                                                {{#if selected}}
+                                                                    checked
+                                                                    data-default
+                                                                {{/if}}
+                                                                {{#if ../required}}required{{/if}}>
+                                                            <label data-product-attribute-value="{{id}}" data-name="{{this.label}}" class="form-label" for="attribute_radio_{{../id}}_{{id}}" {{#if this.label '==' 'None'}}hidden{{/if}}>{{this.label}}</label>
+                                                        {{/each}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{else}}
+                                                <div data-summary-attribute="{{display_name}}">
+                                                    <span class="label">{{display_name}}</span>
+                                                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                                </div>
+                                                {{/inArray}}
+                                            {{else}}
+                                            <div data-summary-attribute="{{display_name}}">
+                                                <span class="label">{{display_name}}</span>
+                                                {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                            </div>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/each}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#select-your-size" class="accordion-title">
+                        Select Your Size
+                        <span>
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="12" height="14">
+                                <path fill="#9B9B9B" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                    <div id="select-your-size" class="accordion-content" data-tab-content>
+                        <div id="custom_sizing_ui_buttons" class="custom-ui-button-wrapper">
+                            <button type="button" name="select_standard" class="custom-ui-button active"><span>Standard<ins> Sizing</ins></span></button>
+                            <button type="button" name="select_find_my_size" class="custom-ui-button" data-reveal-id="modal-sizing-form"><span><ins>Help me </ins>find my size</span></button>
+                        </div>
+                        {{#each product.options}}
+                            {{#if this.type '==' 'Configurable_PickList_Set'}}
+                                {{#if (occurrences this.display_name "Size") '==' 1}}
+                                    <div class="size-item" data-attribute="{{id}}" data-option="{{toLowerCase (hyphenate display_name)}}" data-summary-attribute="{{this.display_name}}">
+                                        <span>{{display_name}}</span>
+                                        <div class="ui-button-group">
+                                        {{#each this.values}}
+                                            <button type="button" {{#if label '==' 'None'}}disabled{{/if}}>{{label}}</button>
+                                        {{/each}}
+                                        </div>
+                                        {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                    </div>
+                                {{/if}}
+                                {{#if (occurrences this.display_name "Adjustment") '==' 1}}
+                                    <div class="size-item range" data-attribute="{{id}}" data-option="{{toLowerCase (hyphenate display_name)}}" data-summary-attribute="{{this.display_name}}">
+                                        <span>{{#replace " Adjustment" this.display_name}}{{/replace}}<!-- <br><em class="up-charge">(+$xx)</em> --></span>
+                                        <div class="range-wrapper">
+                                            <input type="range" min="1" max="{{length this.values}}" step="1" class="" value="{{#each this.values}}{{#if this.selected}}{{add @index 1}}{{/if}}{{/each}}">
+                                            <div class="range-labels">
+                                                {{#each this.values}}
+                                                <span class="range-label" data-value="{{add @index 1}}">
+                                                    {{#and (if @index '>' 0) (if this.label '===' 'Standard')}}
+                                                        <span style="position: absolute; left: -24px;">{{label}}</span>
+                                                    {{else}}
+                                                        {{label}}
+                                                    {{/and}}
+                                                </span>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                        {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                    </div>
+                                {{/if}}
+                                {{#if (occurrences this.display_name "Gasket") '==' 1}}
+                                    <div class="size-item" data-attribute="{{id}}" data-option="{{toLowerCase (hyphenate display_name)}}" data-summary-attribute="{{this.display_name}}">
+                                        <span>{{display_name}}</span>
+                                        <div class="ui-button-group">
+                                        {{#each this.values}}
+                                            <button type="button">{{label}}</button>
+                                        {{/each}}
+                                        </div>
+                                        {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                                    </div>
+                                {{/if}}
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                    {{> kokatat/components/products/modals/sizingModal}}
+                </li>
+            </ul>
+            <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.current_stock'}}
+                    <span data-product-stock>{{product.stock_level}}</span>
+                </label>
+            </div>
+            {{#if product.can_purchase}}
+            {{#each product.options}}
+                {{#if this.display_name '==' 'Accepted Terms'}}
+                <div id="returns-exchanges-terms" hidden>
+                    {{{dynamicComponent 'kokatat/components/products/custom-suits/options'}}}
+                </div>
+                {{/if}}
+            {{/each}}
+            <div class="form-action-facade">
+                <button type="button" id="lcly-button-0" class="button button--primary" disabled>
+                    <span>Buy from a Dealer</span>
+                    <a id="lcly-link-0" href="https://brands.locally.com" target="_blank"></a>
+                </button>
+                <button type="button" id="form-trigger-addToCart" class="button button--primary" disabled>
+                    <span>
+                        <svg id="Icon_Cart" xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 54.341 40.494">
+                            <path id="Path_396" data-name="Path 396" d="M931.746,1180.725a1.854,1.854,0,0,0-1.447-.7l-38.93-.044-1.187-4.537a1.849,1.849,0,0,0-1.791-1.382h-8.733a1.851,1.851,0,1,0,0,3.7h7.3l1.176,4.5c.008.029.014.055.021.082l5.067,19.365a1.851,1.851,0,0,0,1.791,1.382h30.819a1.854,1.854,0,0,0,1.8-1.435l4.461-19.36A1.858,1.858,0,0,0,931.746,1180.725Zm-7.384,18.661H896.446l-4.108-15.7,35.632.041Z" transform="translate(-877.807 -1174.063)" fill="#1a1818"></path>
+                            <ellipse id="Ellipse_21" data-name="Ellipse 21" cx="3.709" cy="3.733" rx="3.709" ry="3.733" transform="translate(18.043 33.028)" fill="#1a1818"></ellipse>
+                            <ellipse id="Ellipse_22" data-name="Ellipse 22" cx="3.709" cy="3.733" rx="3.709" ry="3.733" transform="translate(40.412 33.028)" fill="#1a1818"></ellipse>
+                        </svg>
+                    </span>
+                    Add to Cart
+                </button>
+            </div>
+                {{> components/products/add-to-cart}}
+            {{/if}}
+            {{#if product.out_of_stock}}
+                {{#if product.out_of_stock_message}}
+                    {{> components/common/alert-error product.out_of_stock_message}}
+                {{else}}
+                    {{> components/common/alert-error (lang 'products.sold_out')}}
+                {{/if}}
+            {{/if}}
+        </form>
+    </div>
+</div>
+<div id="custom_product_image">
+    <div class="inner-wrapper">
+
+    </div>
+</div>
+<div id="summary_dropdown">
+    <div class="content-container">
+        <h2 class="uk-margin-top uk-margin-large-bottom">Custom Summary</h2>
+        <div id="base_summary" class="summary-section">
+			<h5 class="summary-section-heading">Base Color</h5>
+			<ul class="summary-items">
+
+            </ul>
+		</div>
+        <div id="addon_summary" class="summary-section">
+			<h5 class="summary-section-heading">Custom Features</h5>
+			<ul class="summary-items">
+
+            </ul>
+		</div>
+        <div id="size_summary" class="summary-section">
+			<h5 class="summary-section-heading">Size</h5>
+			<ul class="summary-items">
+
+            </ul>
+		</div>
+    </div>
+</div>

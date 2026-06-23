@@ -1,0 +1,15 @@
+<div id="strike-home-nav">
+  <div class="nav">
+    <ul class="nav-list">
+      {{#each categories}}
+        {{#if name '==' 'Strike'}}
+          {{#each children}}
+            <li class="list-item">
+              <a href="{{url}}">{{name}}</a>
+            </li>
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>

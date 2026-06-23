@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWSBSR3');</script>
+        <!-- End Google Tag Manager -->
+        
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="GkgKBRotdUdWkN8-CVrzh1FCgex-cbiMA8_2srKZdys" />
+        <meta name="facebook-domain-verification" content="jakftfg5yt6sd4n9w4d6itv5g8q13r" />
+        <script type="text/javascript">
+            if (window.sessionStorage.getItem('pro_application_redirect') !== null && window.sessionStorage.getItem('pro_application_redirect') === 'true') {
+                if (window.location.pathname ==='/account.php') {
+                    window.sessionStorage.removeItem('pro_application_redirect');
+                    location.assign('/pro/');
+                } else {
+                    if (window.location.pathname !== '/login.php') {
+                        window.sessionStorage.removeItem('pro_application_redirect');
+                    }
+                }
+            }
+        </script>
+
+        <script>
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script>
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        {{!-- <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script> --}}
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+        
+        {{getFontsCollection font-display='block'}}
+        
+        <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+
+        {{!-- {{ getFontsCollection }} --}}
+        {{{stylesheet '/assets/css/theme.css'}}}
+
+        <script type="text/javascript">
+            var context = JSON.parse({{jsContext}});
+
+            if (context.hasOwnProperty('categoryProducts')) {
+                window.categoryProducts = context.categoryProducts;
+            }
+            
+            if (context.hasOwnProperty('cartItems')) {
+                window.cartItems = context.cartItems;
+            }
+        </script>
+
+        {{!-- Product card swatch functionality --}}
+        <script>
+            function cardSwatchX(e) {
+                e.preventDefault();
+
+                const labelElem = e.target.tagName === 'LABEL' ? e.target : e.target.closest('label');
+                labelElem.previousElementSibling.checked = true;
+
+                const color = e.target.tagName === 'SPAN' ? e.target : e.target.querySelector('span');
+
+                fetch('/graphql', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer {{settings.storefront_api.token}}'
+                    },
+                    body: JSON.stringify({
+                        query: `
+                            query productById {
+                                site {
+                                    product(entityId: ${+(e.target.closest('label').dataset.productId)}) {
+                                        id
+                                        entityId
+                                        name
+                                        plainTextDescription
+                                        defaultImage {
+                                            ...ImageFields
+                                        }
+                                        images {
+                                            edges {
+                                                node {
+                                                    ...ImageFields
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            fragment ImageFields on Image {
+                                url320wide: url(width: 320)
+                                url640wide: url(width: 640)
+                                url960wide: url(width: 960)
+                                url1280wide: url(width: 1280)
+                                altText: altText
+                            }
+                        `
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    let hasRollOverImage = false;
+
+                    for (let i = 0; i < data.data.site.product.images.edges.length; i++) {
+                        let productImage = data.data.site.product.images.edges[i];
+
+                        let productAltText = productImage.node.altText;
+
+                        if (productAltText == color.title + '-1') {
+                            const productImageElem = color.closest('article.card').querySelector('img');
+
+                            productImageElem.src = productImage.node.url320wide;
+                            productImageElem.alt = productImage.node.altText;
+                            productImageElem.title = productImage.node.altText;
+                            productImageElem.removeAttribute('srcset');
+                        }
+
+                        if (productAltText == color.title + '-2') {
+                            const productFigure = color.closest('article.card').querySelector('figure');
+                            productFigure.classList.remove('single');
+                            hasRollOverImage = true;
+
+                            if (productFigure.querySelectorAll('img').length == 2) {
+                                const secondImage = productFigure.querySelectorAll('img')[1];
+
+                                secondImage.src = productImage.node.url320wide;
+                                secondImage.alt = productImage.node.altText;
+                                secondImage.title = productImage.node.altText;
+                            } else {
+                                const secondImage = document.createElement('img');
+
+                                secondImage.className = 'card-image';
+                                secondImage.src = productImage.node.url320wide;
+                                secondImage.alt = productImage.node.altText;
+                                secondImage.title = productImage.node.altText;
+                                productFigure.querySelector('img').after(secondImage);
+                            }
+                        }
+                    }
+
+                    if (!hasRollOverImage && color.closest('article.card').querySelector('.card-img-container').querySelectorAll('img').length == 2) {
+                        color.closest('article.card')
+                        .querySelector('.card-img-container')
+                        .removeChild(color.closest('article.card')
+                        .querySelector('.card-img-container')
+                        .querySelectorAll('img')[1]);
+                    
+                        color.closest('article.card').querySelector('.card-figure').classList.add('single');
+                    }
+
+                })
+                .catch(error => console.error(error));
+            }
+        </script>
+        {{{head.scripts}}}
+
+        {{~inject 'themeSettings' theme_settings}}
+        {{~inject 'zoomSize' theme_settings.zoom_size}}
+        {{~inject 'productSize' theme_settings.product_size}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'maintenanceMode' settings.maintenance}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'pageType' page_type}}
+        {{~inject 'bearerToken' settings.storefront_api.token}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
+        {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
+        {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWSBSR3"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{~#and settings.privacy_cookie settings.is_eu_ip_address}}
+            {{> components/common/cookie}}
+        {{/and}}
+
+        {{> kokatat/components/common/header }}
+        {{> components/common/body }}
+        {{> kokatat/components/common/footer }}
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        {{!-- <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script> --}}
+        <script>
+            {{!-- Exported in app.js --}}
+            // window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+            function onThemeBundleMain() {
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+                function browserSupportsFormData() {
+                    return typeof FormData !== 'undefined' 
+                        && !!FormData.prototype.keys;
+                }
+                function loadFormDataPolyfillScript(src) {
+                    var formDataPolyfillScript = document.createElement('script');
+                    formDataPolyfillScript.src = src;
+                    formDataPolyfillScript.onerror = function () {
+                        console.error('Failed to load formData polyfill script ' + src);
+                    };
+                    document.body.appendChild(formDataPolyfillScript);
+                }
+                if (!browserSupportsFormData()) {
+                    loadFormDataPolyfillScript('{{cdn 'assets/dist/theme-bundle.polyfill_form_data.js'}}');
+                }
+            }
+        </script>
+        <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
+
+        {{{footer.scripts}}}
+    </body>
+</html>

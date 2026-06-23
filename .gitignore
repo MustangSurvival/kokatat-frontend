@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Stencil auth & secrets — never commit these
+.stencil
+secrets.stencil.json
+
+# Stencil build output & cache
+.stencil-cache/
+stencil_context/
+parsed/
+assets/dist/
+
+# Build artifacts
+*.zip
+*.tar.gz
+
+# Accessibility reports
+a11y-report/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

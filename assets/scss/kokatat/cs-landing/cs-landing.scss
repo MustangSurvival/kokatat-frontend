@@ -1,0 +1,364 @@
+#custom_marquee {
+  margin-top: 0;
+
+  .slick-next,
+  .slick-prev {
+    top: calc(27%);
+
+    @include breakpoint("small") {
+      top: calc(32%);
+    }
+
+    @include breakpoint("medium") {
+      top: calc(35%);
+    }
+
+    @include breakpoint("large") {
+      top: calc(50% - 5px);
+    }
+  }
+
+  .heroCarousel .slick-list {
+    overflow: hidden;
+  }
+
+  .heroCarousel-image {
+    display: none;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .heroCarousel-action {
+    margin: 0;
+  }
+  .marq-links {
+    .button--primary {
+      margin: 0 0 12px 0;
+      transition: all 0.25s ease;
+      max-width: 250px;
+      margin-bottom: 12px;
+      margin-left: auto;
+      margin-right: auto;
+
+      &:hover {
+        transform: scaleX(1.08) translate(0.66em);
+        transition: all 0.25s ease;
+        .heroCarousel-action {
+          transform: scaleX(0.90909);
+        }
+      }
+    }
+  }
+  .heroCarousel-content {
+    background-color: #ffffff;
+    padding: 0;
+    .content-container {
+      margin-top: 3rem;
+    }
+    .copy-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .slide-bg {
+      min-height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      @include breakpoint("small") {
+        min-height: 350px;
+      }
+      @include breakpoint("medium") {
+        min-height: 400px;
+      }
+      @include breakpoint("large") {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-size: cover;
+        background-position: center;
+        min-height: 500px;
+      }
+    }
+
+    .primary-button,
+    .text-link {
+      margin: 0;
+    }
+
+    .primary-button + .text-link {
+      margin-left: 30px;
+    }
+  }
+
+  .content-bg,
+  .content-fg {
+    display: none;
+  }
+
+  .heroCarousel-title {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  .heroCarousel-description {
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  @include breakpoint("large") {
+    .heroCarousel {
+      margin-top: 0;
+      height: 550px;
+    }
+
+    .heroCarousel .slick-list {
+      overflow: inherit;
+    }
+
+    .heroCarousel .slick-next,
+    .heroCarousel .slick-prev {
+      top: calc(50% - 30px);
+    }
+
+    .heroCarousel-slide {
+      height: 500px;
+      .heroCarousel-image {
+        display: none;
+      }
+      .heroCarousel-content {
+        background-color: #f2f2f2;
+        height: 500px;
+        width: 100%;
+        transform: none;
+        top: 0;
+
+        .copy-container {
+          width: 50%;
+          height: auto;
+          background-color: transparent;
+          padding: 50px;
+          position: relative;
+          z-index: 2;
+          text-align: left;
+
+          &.bg-white {
+            background-color: #ffffff;
+          }
+
+          .h5-subHead-lg {
+            margin-bottom: 5px;
+          }
+        }
+
+        .content-container {
+          position: relative;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding-left: 6rem;
+          padding-right: 6rem;
+        }
+
+        .marq-links {
+          display: flex;
+          align-items: center;
+          margin-left: 0;
+        }
+
+        &.left-content {
+          .content-bg {
+            display: block;
+            right: 0;
+            top: 10px;
+          }
+
+          .content-fg {
+            display: block;
+            left: 45%;
+            bottom: -100px;
+          }
+        }
+
+        &.right-content {
+          .content-container {
+            justify-content: flex-end;
+          }
+
+          .content-bg {
+            display: block;
+            left: 0;
+          }
+
+          .content-fg {
+            display: block;
+            right: 45%;
+          }
+        }
+
+        .content-bg {
+          width: 57.8%;
+          position: absolute;
+          z-index: 1;
+          top: 30px;
+        }
+
+        .content-fg {
+          position: absolute;
+          z-index: 3;
+          width: 29%;
+          bottom: -60px;
+          top: inherit;
+        }
+
+        .heroCarousel-title {
+          font-size: 40px;
+          line-height: 45px;
+          letter-spacing: 0;
+        }
+      }
+
+      .home-body-banner {
+        box-sizing: border-box;
+        display: inline-flex;
+        height: 150px;
+        padding: 60px;
+
+        p {
+          margin: auto 10px;
+        }
+      }
+    }
+  }
+}
+
+.page.custom-landing {
+  margin: 0;
+}
+#cs-landing {
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    @include breakpoint("medium") {
+      flex-direction: row;
+    }
+    @include breakpoint("large") {
+      padding-right: 3rem;
+      padding-left: 3rem;
+    }
+  }
+
+  .cs-landing-container {
+    background-color: #ffffff;
+    padding-bottom: 20px;
+    @include breakpoint("medium") {
+      padding-bottom: 80px;
+    }
+  }
+
+  .cs-landing-copy {
+    width: 100%;
+    order: 1;
+    @include breakpoint("medium") {
+      width: 75%;
+      padding-right: 50px;
+    }
+  }
+
+  .cs-landing-panel-container {
+    width: 100%;
+    order: 2;
+    padding: 30px;
+    background-color: #f2f2f2;
+    height: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    @include breakpoint("medium") {
+      width: 25%;
+      margin-top: 0;
+    }
+  }
+
+  .cs-landing-feed-container {
+    // width: 100%;
+    order: 3;
+    @include breakpoint("medium") {
+      width: 100%;
+    }
+
+    #product-listing-container {
+      .pagination {
+        position: relative;
+        top: 0;
+        left: 5%;
+        float: left;
+
+        .pagination-list {
+          // float: left;
+          .pagination-item {
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint("medium") {
+    margin: 0 0 3rem;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 0;
+    margin-top: 3rem;
+    justify-content: center;
+
+    .productGrid {
+      display: flex;
+      flex-wrap: wrap;
+
+      .product {
+        margin: 0 0 1.5rem;
+        width: 100%;
+
+        .compare-checkbox {
+          display: none;
+        }
+
+        .card-figcaption-body {
+          display: none !important;
+        }
+      }
+      @include breakpoint("small") {
+        justify-content: center;
+
+        .product {
+          flex-basis: 45%;
+          flex-grow: unset;
+          margin: 0.75rem;
+        }
+      }
+      @include breakpoint("medium") {
+        justify-content: flex-start;
+
+        .product {
+          flex-basis: 30%;
+          flex-grow: unset;
+        }
+      }
+      @include breakpoint("large") {
+        .product {
+          flex-basis: 23%;
+          flex-grow: unset;
+        }
+      }
+    }
+  }
+}

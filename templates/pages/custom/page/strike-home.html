@@ -1,0 +1,45 @@
+{{#partial "page"}}
+
+{{#each shipping_messages}}
+  {{> components/common/alert-info message}}
+{{/each}}
+
+  <main class="strike">
+    <div class="strike-home">
+
+      <section id="homepage_marquee" class="heroCarousel">
+        
+      </section>
+
+        <div class="content-container">
+
+          {{> strike/components/home/home-nav}}
+
+          {{> strike/components/home/home-cta}}
+        </div>
+
+        <div class="grey-bkg">
+
+          {{> strike/components/home/home-banner}}
+
+          <div class="content-container">
+
+            {{> strike/components/home/home-featured}}
+
+          </div>
+
+        </div>
+
+    </div>
+  </main>
+
+  <div id="component_templates" hidden>
+      {{> kokatat/components/marquee-slide}}
+      <div id="productCarousel">
+          {{> kokatat/components/product-carousel}}
+      </div>
+  </div>
+
+{{/partial}}
+
+{{> layout/strike-layout}}

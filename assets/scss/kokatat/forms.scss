@@ -1,0 +1,13 @@
+//forms styling
+
+.form-input {
+    border-radius: 0;
+    border-color: #E6E6E6;
+}
+.form-input::placeholder {
+    color: #707070;
+    font-family:  "Montserrat", sans-serif!important;
+    font-weight: bold;
+    letter-spacing: .6px;
+    font-size: 13px;
+}

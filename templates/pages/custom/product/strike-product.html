@@ -1,0 +1,43 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject "productData" product}}
+{{inject "storefrontToken" settings.storefront_api.token}}
+{{inject 'storeHash' settings.store_hash}}
+{{#partial "page"}}
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+    <div itemscope itemtype="http://schema.org/Product">
+        {{> strike/components/products/product-view schema=true  }}
+        {{> strike/components/products/product-navigation }}
+        {{> kokatat/components/products/product-feature-blocks }}
+        {{> kokatat/components/products/tech-features-component }}
+        {{> kokatat/components/products/product-care-component }}
+        {{> kokatat/components/products/sizing-component }}
+
+        {{{region name="product_below_content"}}}
+
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
+
+        {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
+            {{> kokatat/components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+
+        {{> kokatat/components/products/related-products}}
+    </div>
+{{/partial}}
+{{> layout/strike-layout}}

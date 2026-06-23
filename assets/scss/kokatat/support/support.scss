@@ -1,0 +1,129 @@
+﻿#careers-page,
+#sales-rep-page,
+#support-pages {
+  .heroCarousel-image {
+    max-width: none;
+    @include breakpoint("small") {
+      max-width: 100%;
+    }
+  }
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint("medium") {
+      flex-direction: row;
+    }
+  }
+
+  .secondary-marquee {
+    position: relative;
+    // top: 0;
+    z-index: -1;
+  }
+
+  .pdf-link a {
+    display: flex;
+    align-items: flex-end;
+    color: #000000;
+    text-decoration: none;
+    margin-bottom: 15px;
+
+    &:hover {
+      color: #000000;
+
+      svg path {
+        fill: #4a7322;
+      }
+    }
+  }
+
+  .support-container {
+    width: 100%;
+    order: 1;
+    margin: -20px auto 80px;
+
+    #lcly-button-0 {
+      margin: 80px auto;
+    }
+
+    iframe {
+      #form {
+        padding-top: 0;
+      }
+    }
+
+    .top-header {
+      border-bottom: 6px solid #000000;
+      margin-bottom: 1.5rem;
+    }
+
+    .copy-block {
+      padding: 1.5rem 0;
+
+      h4 {
+        margin-top: 0;
+      }
+    }
+    @include breakpoint("medium") {
+      width: 75%;
+    }
+    .accordion-header, .pdf-header {
+      padding-bottom: 15px;
+      border-bottom: 6px solid #000000;
+    }
+    .accordion {
+      .accordion-item .accordion-title {
+        text-transform: lowercase;
+        font-weight: normal;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+    }
+    .pdf-files {
+      padding-top: 15px;
+    }
+  }
+
+  .support-panel-container {
+    width: 100%;
+    order: 2;
+    @include breakpoint("medium") {
+      width: 25%;
+      z-index: 2;
+      position: relative;
+      top: 30%;
+      right: 0;
+    }
+  }
+}
+
+#sales-rep-page {
+  .support-container {
+    margin: 30px auto 80px;
+  }
+}
+
+#careers-page {
+  .heroCarousel-image {
+    max-width: none;
+    @include breakpoint("small") {
+      max-width: 100%;
+    }
+  }
+
+  .careers-container {
+    @include breakpoint("medium") {
+      float: left;
+      width: 75%;
+    }
+  }
+
+  .support-panel-container {
+    @include breakpoint("medium") {
+      float: right;
+      width: 25%;
+      top: 0;
+      right: 0;
+    }
+  }
+}

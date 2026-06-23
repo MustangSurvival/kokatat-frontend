@@ -1,0 +1,177 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {
+      "custom-suit-landing.html": ["/custom/"]
+    },
+    "page": {
+      "team-landing.html": [
+        "/team/"
+      ],
+      "team-member.html": [
+        "/team/louis-norris",
+        "/team/diana-kushner",
+        "/team/george-shaw",
+        "/team/james-roberts-ca",
+        "/team/jessie-rice",
+        "/team/eike-kohler",
+        "/team/per-gustav",
+        "/team/olly-hicks",
+        "/team/sarah-mcnair-landry",
+        "/team/anne-sophie-daigle",
+        "/team/mike-dillon",
+        "/team/ben-scott",
+        "/team/roger-rovira",
+        "/team/shannon-mast",
+        "/team/james-roberts-uk",
+        "/team/owen-doyle",
+        "/team/shaun-rodgers",
+        "/team/charlie-daly/",
+        "/team/kirra-paulus",
+        "/team/abby-holcombe",
+        "/team/ava-christensen",
+        "/team/amber-champion",
+        "/team/aoife-harahan",
+        "/team/alan-battista",
+        "/team/alicia-casas-zaragoza",
+        "/team/aniol-serrasolses",
+        "/team/ari-walker",
+        "/team/barny-young",
+        "/team/ben-stookesberry",
+        "/team/blake-hornblow",
+        "/team/bjorn-nehrhoff",
+        "/team/bridgett-howard",
+        "/team/brad-hole",
+        "/team/cashion-porter-shirley",
+        "/team/carson-lindsay",
+        "/team/chris-korbulic",
+        "/team/christian-edie",
+        "/team/christopher-lockyer",
+        "/team/clay-wright",
+        "/team/daan-jimmink",
+        "/team/dan-smullen",
+        "/team/dane-jackson",
+        "/team/darby-mcadams",
+        "/team/david-horkan",
+        "/team/drew-gregory",
+        "/team/diego-robles",
+        "/team/dylan-mckinney",
+        "/team/edward-muggridge/",
+        "/team/emily-jackson",
+        "/team/eric-harrison",
+        "/team/evan-moore",
+        "/team/frank-wolf",
+        "/team/gerd-serrasolses",
+        "/team/hailey-thompson",
+        "/haven-livingston/",
+        "/team/helen-wilson",
+        "/team/holcombe-family",
+        "/team/isaac-levinson",
+        "/team/jaime-sharp",
+        "/team/jakub-sedivy",
+        "/team/jeff-allen",
+        "/team/jess-matheson",
+        "/team/jim-sammons",
+        "/team/johnny-chase",
+        "/team/jon-burak",
+        "/team/jordy-searle",
+        "/team/jules-domine",
+        "/team/justine-curgenven",
+        "/team/kalob-grady",
+        "/team/kevin-cullen",
+        "/team/kevin-whitley",
+        "/team/kilian-ivelic",
+        "/team/kimberley-kenyon",
+        "/team/kristof-stursa/",
+        "/team/lane-jacobs",
+        "/team/laura-zulliger",
+        "/team/leon-somme",
+        "/team/mariann-saether",
+        "/team/martin-trahan",
+        "/team/martin-gutierrez",
+        "/team/marcos-gallegos",
+        "/team/melissa-demarie",
+        "/team/miles-harvey",
+        "/team/natalie-kramer-anderson",
+        "/team/nouria-newman",
+        "/team/norm-hann",
+        "/team/paul-kuthe",
+        "/team/pierce-huser",
+        "/team/pedro-astorga",
+        "/team/quim-fontane-i-maso",
+        "/team/rafa-ortiz",
+        "/team/reta-boychuk",
+        "/team/rob-choi",
+        "/team/richard-ofner",
+        "/team/sadat-kawawa/",
+        "/team/sage-donnelly",
+        "/team/sandy-macewan",
+        "/team/sean-white",
+        "/team/seth-ashworth",
+        "/team/shawna-franklin",
+        "/team/simon-osborne",
+        "/team/tara-mulvany",
+        "/team/vance-harris",
+        "/team/thomas-richard",
+        "/team/tom-dolle",
+        "/team/valentin-gutierrez",
+        "/team/will-copestake",
+        "/dustin-silvey/"
+      ],
+      "about-us.html": [
+        "/about-us"
+      ],
+      "careers.html": [
+        "/careers"
+      ],
+      "contact.html": [
+        "/contact-us"
+      ],
+      "life-landing.html": [
+        "/life"
+      ],
+      "sales-rep.html": [
+        "/reps"
+      ],
+      "strike-home.html": [
+        "/strike/"
+      ],
+      "strike-static.html": [
+        "/strike/support/sizing",
+        "/strike/support/product-use-care",
+        "/strike/support/repairs",
+        "/strike/support/resources"
+      ],
+      "strike-contact.html": [
+        "/strike/support/contact-us"
+      ],
+      "strike-support.html": [
+        "/strike-support/"
+      ],
+      "style-guide.html": [
+        "/style-guide/"
+      ],
+      "support-landing.html": [
+        "/support/"
+      ],
+      "support.html": [
+        "/support/shipping-returns",
+        "/support/product-use-care",
+        "/support/sizing",
+        "/support/warranty-repairs",
+        "/support/faqs",
+        "/support/government-sales",
+        "/support/declaration-of-conformity"
+      ],
+      "terms-privacy.html": [
+        "/terms-of-use/",
+        "/privacy-policy"
+      ]
+    },
+    "product": {}
+  },
+  "normalStoreUrl": "https://store-2y1g1tdlub.mybigcommerce.com",
+  "port": "3000",
+  "packageManager": "npm",
+  "skipInstall": true
+}

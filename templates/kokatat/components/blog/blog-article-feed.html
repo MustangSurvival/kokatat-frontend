@@ -1,0 +1,32 @@
+<!-- {{#each blog.posts}}
+    {{> components/blog/post post=this}}
+{{/each}} -->
+<div id="blog-article-feed" class="content-container" hidden>
+    <article class="blog">
+        <div class="blog-post-figure"></div>
+        <div class="content-container">
+            <h1>Related articles</h1>
+            <div class="blog-post-feed">
+                <div class="blog-card" hidden>
+                    <img class="blog-thumbnail-image" alt="" title="" src="" style="order: 1;">
+                    <div class="blog-content">
+                        <header class="blog-header">
+                            <div class="blog-subhead">
+                                <div class="tag"></div>
+                                <div class="subhead-divider">|</div>
+                                <div class="blog-date"></div>
+                            </div>
+                            <h2 class="blog-title">
+                                <a href="" aria-label="Related article"><span class="is-srOnly">Related article</span></a>
+                            </h2>
+                        </header>
+                        <div class="blog-post">
+                            <p></p>
+                            <a href="" class="text-link">read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

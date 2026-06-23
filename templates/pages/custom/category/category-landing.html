@@ -1,0 +1,89 @@
+---
+category:
+    shop_by_price: true
+    description: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    <div class="category-marquee">
+        <div class="marquee-text content-container">
+            <h1 class="page-heading">{{category.name}}</h1>
+            <p class="text-copy"></p>
+        </div>
+    </div>
+    <div class="category-nav content-container">
+        <div class="nav">
+            <ul class="nav-list">
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-container grey-bkg">
+        {{>kokatat/components/category/category-featured }}
+    </div>
+
+    <section id="category_blocks" class="">
+        <div class="content-container">
+            <div class="feature-grid-wrapper">
+
+            </div>
+        </div>
+    </section>
+    <section id="cat-featured-story" class="story-block content-container">
+
+    </section>
+    <section id="cat-featured-expedition" class="marquee">
+
+    </section>
+
+    <div class="content-container grey-bkg">
+        {{>kokatat/components/category/category-featured-2 }}
+    </div>
+
+    <div class="category-instagram">
+
+        <div class="ig-header">
+            <h3 class="page-heading">
+                <img src="{{cdn 'img/kokatat/icon-assets/Icon_IG.svg'}}" alt="" role="presentation">
+                tag your adventures with #kokatat
+            </h3>
+        </div>
+
+        <div class="instagram-feed">
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-98438c95-428d-4482-8e73-5f463d794c66"></div>
+        </div>
+
+    </div>
+
+    {{{region name="category_below_header"}}}
+
+    {{{category.description}}}
+
+    <div class="content-container grey-bkg">
+        {{> kokatat/components/category/seo-text}}
+    </div>
+
+    <div id="component_templates" hidden>
+        <div id="productCarousel">
+            {{> kokatat/components/product-carousel}}
+        </div>
+        {{> kokatat/components/feature-grid}}
+        {{> kokatat/components/featured-blog-post}}
+        {{> kokatat/components/featured-expedition}}
+    </div>
+{{/partial}}
+{{> layout/base}}

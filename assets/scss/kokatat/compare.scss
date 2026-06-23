@@ -1,0 +1,33 @@
+.compareTable-action .button {
+    display: flex;
+    font-size: 12px;
+    white-space: normal;
+}
+.compareTable-removeProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+        margin-top: 0;
+        margin-right: 0;
+    }
+}
+.compareTable-action {
+    padding-bottom: 20px;
+}
+@include breakpoint("small") {
+    .compareTable-action .button {
+        font-size: 14px;
+    }
+}
+@include breakpoint("medium") {
+    .compareTable-heading {
+        width: 15%;
+        padding-right: 20px;
+    }
+    .compareTable-heading, .compareTable-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    } 
+}
+    

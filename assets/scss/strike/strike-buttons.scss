@@ -1,0 +1,20 @@
+.strike-site {
+    .button--primary, .primary-button {
+        background-color: #6A6C61;
+        span {
+            white-space: nowrap;
+        }
+        &:hover {
+            background-color: #948E7D;
+        }
+    }
+    .primary-button-no-arrow {
+        background-color: #6A6C61;
+    }
+    .button--secondary, .secondary-button {
+        &:hover {
+            background-color: #948E7D;
+            color: #FFFFFF;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{{#partial "page"}}
+
+  <main class="page" id="about-page">
+    <div class="secondary-marquee">
+      <div class="heroCarousel-slide">
+        <div class="heroCarousel-image-wrapper">
+          <img class="heroCarousel-image" alt="" title="" src="">
+          <div class="placeholder">
+            <canvas height="450" width="1480"></canvas>
+          </div>
+        </div>
+        <div class="content-container">
+          <div class="content-wrapper">
+            <div class="copy-container">
+              {{#unless theme_settings.hide_page_heading }}
+                <h1 class="page-heading">{{ page.title }}</h1>
+              {{/unless}}
+                <p class="page-subhead"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="about-container">
+        <section class="page-content page-content--centered">
+            <div class="top-section"></div>
+            <div class="about-video embed-responsive"></div>
+            <div class="about-sections"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,36 @@
+{{#partial "page"}}
+
+<main class="page">
+  <section class="page-content page-content--centered">
+    {{!-- Get the currency object --}} {{#withFirst
+    currency_selector.currencies}} {{!-- Get the start of the URL without the
+    query string--}} {{#withFirst (split this.switch_url "?")}} {{!-- Get the
+    page URL without the domain --}} {{#withLast (split this
+    ../../settings.base_url)}} {{!-- et voila! The current page path.--}} {{#if
+    this '==' '/pro/'}}
+    <h1 class="page-heading">KOKATAT PRO PROGRAM</h1>
+    <p class="u-textAlignCenter">
+      Our industry professionals are important to us. The Kokatat Pro Program is
+      a members only program for individuals that qualify.
+      <a href="/login.php">Please login</a> or
+      <a href="/login.php?action=create_account">create an account</a> so that
+      you can complete the Kokatat Pro application.
+    </p>
+    {{else }}
+    <h1 class="page-heading">KOKATAT EMPLOYEE PROGRAM</h1>
+    <p class="u-textAlignCenter">
+      <a href="/login.php">Please login</a> or
+      <a href="/login.php?action=create_account">create an account</a> so that
+      you can complete the employee discount application.
+    </p>
+    {{/if}} {{/withLast}} {{/withFirst}} {{/withFirst}}
+  </section>
+</main>
+
+<script type="text/javascript">
+  if (window.location.pathname === "/pro/") {
+    window.sessionStorage.setItem("pro_application_redirect", "true");
+  }
+</script>
+
+{{/partial}} {{> layout/base}}

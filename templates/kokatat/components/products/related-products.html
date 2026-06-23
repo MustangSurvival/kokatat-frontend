@@ -1,0 +1,22 @@
+{{#if product.related_products}}
+<section id="related-products" class="related-products product-component">
+    <div class="content-container">
+        <div class="heading-container">
+            <h3 class="heading"><span id="related-products-link">{{lang 'products.related_products'}}</span></h3>
+        </div>
+        <div class="related-toggleLink">
+            <h4 class="u-hiddenVisually">Related products kit heading</h4>
+            <h4>Complete the Kit</h4>
+        </div>
+        <div class="related">
+            <div aria-hidden="false" class="has-jsContent is-active">
+                {{#if settings.data_tag_enabled}}
+                    {{> components/products/grid products=product.related_products columns=4 list="Related Products"}}
+                {{else}}
+                    {{> components/products/grid products=product.related_products columns=4}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+{{/if}}

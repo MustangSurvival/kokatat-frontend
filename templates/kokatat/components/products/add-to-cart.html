@@ -1,0 +1,76 @@
+<div class="qty-row">
+{{#if theme_settings.show_product_quantity_box}}
+    <div class="form-field form-field--increments">
+        <div class="form-increment" data-quantity-change>
+          <select class="qty-dropdown eyebrow form-input form-input--incrementTotal"
+                 id="qty[]"
+                 name="qty[]"
+                 data-quantity-max="{{product.max_purchase_quantity}}"
+                 aria-label="{{lang 'products.quantity'}}"
+                 aria-live="polite">
+              <option value="" disabled selected>{{lang 'products.quantity'}}</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+          </select>
+        </div>
+    </div>
+{{/if}}
+
+    <div class="availability-container">
+        <div class="availability-message">
+            <div class="h6-subHead-sm">{{lang 'products.availability'}}</div>
+            <div class="eyebrow">{{product.availability}}</div>
+        </div>
+        <div class="alertBox productAttributes-message" style="display:none">
+            <div class="alertBox-column alertBox-icon">
+                <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+            </div>
+            <p class="alertBox-column alertBox-message"></p>
+        </div>
+    </div>
+
+</div>
+
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+  <div class="add-to-cart-row" id="addToCartRow">
+    <div class="form-action add-to-cart-container">
+      <input id="form-action-addToCart" class="button button--primary" type="submit" value="">
+      <label class="form-action-label cart" for="form-action-addToCart">{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
+        <svg id="Icon_TextLinkArrow" xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 15.865 10">
+          <path id="Color_Overlay" data-name="Color Overlay"
+            d="M10.771,9.843a.531.531,0,0,1,0-.767l3.784-3.623H.582A.525.525,0,0,1,0,4.9a.524.524,0,0,1,.582-.557H14.337L10.771.924a.531.531,0,0,1,0-.766.589.589,0,0,1,.8,0L15.429,3.85A1.118,1.118,0,0,1,15.865,4.9a2.027,2.027,0,0,1-.437,1.254L11.571,9.843a.589.589,0,0,1-.8,0Z"
+            fill="#FFFFFF" />
+        </svg>
+      </label>
+    </div>
+    <div id="outOfStock" class="outOfStock"></div>
+  </div>
+
+  {{#each product.custom_fields}}
+    {{#if name '==' 'Customize'}}
+    <div class="add-to-cart-row">
+      <div class="form-action customize">
+        <a href="{{value}}" class="form-action-label">
+          <svg id="Icon_Custom" xmlns="http://www.w3.org/2000/svg" width="26.25" height="25.141" viewBox="0 0 26.25 25.141">
+            <path id="Path_1024" data-name="Path 1024"
+            d="M8.5,14.2a3.694,3.694,0,0,1,7.185-1.216l4.5-4.5L18.031,6.324a.651.651,0,0,0-.912,0l-1.05,1.05A7.659,7.659,0,0,0,14.3,6.656V5.163a.655.655,0,0,0-.663-.663H10.763a.639.639,0,0,0-.663.663V6.656a7.659,7.659,0,0,0-1.769.719l-1.05-1.05a.651.651,0,0,0-.912,0L4.352,8.341a.651.651,0,0,0,0,.912L5.4,10.3a7.659,7.659,0,0,0-.719,1.769H3.163a.655.655,0,0,0-.663.663v2.846a.639.639,0,0,0,.663.663H4.656a7.659,7.659,0,0,0,.719,1.769l-1.05,1.05a.626.626,0,0,0,0,.912l2.156,2.156,4.5-4.5A3.55,3.55,0,0,1,8.5,14.2Z"
+            transform="translate(-2.5 -4.5)" />
+            <rect id="Rectangle_1000" data-name="Rectangle 1000" width="13.928" height="5.997" transform="translate(8.366 17.061) rotate(-45)" />
+            <path id="Path_1025" data-name="Path 1025" d="M80.363,20.179l-2.957-2.985a.884.884,0,0,0-1.271,0L74.2,19.129l4.256,4.256L80.39,21.45A.909.909,0,0,0,80.363,20.179Z" transform="translate(-54.386 -13.491)" />
+            <path id="Path_1026" data-name="Path 1026" d="M20.079,73.105a1.153,1.153,0,0,0-.249.442l-.884,3.841a.913.913,0,0,0,1.078,1.078l3.841-.884a.8.8,0,0,0,.442-.249l1.105-1.105L21.185,72Z" transform="translate(-14.386 -53.346)" />
+          </svg>{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}Customize{{/if}}
+        </a>
+      </div>
+      <div class="customize-spaceholder"></div>
+    </div>
+    {{/if}}
+    {{/each}}
+{{/or}}

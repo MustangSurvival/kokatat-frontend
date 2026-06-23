@@ -1,0 +1,108 @@
+<nav class="navUser">
+    {{> components/common/currency-selector}}
+    <ul class="navUser-section navUser-section--alt">
+        <!-- SHOP -->
+        <li class="navUser-item shop">
+            <button type="button" class="navUser-action" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-shop">shop
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+          </button>
+          {{> kokatat/components/common/product-navigation}}
+        </li>
+        <!-- CUSTOM -->
+        <li class="navUser-item">
+            <a class="navUser-action" href="/custom/">custom</a>
+        </li>
+        <!-- SUPPORT -->
+        <li class="navUser-item pages">
+            <button type="button" class="navUser-action" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-support">support
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+            </button>
+            <nav class="navDropdown navProducts" id="desktop-nav-support">
+                <ul class="navPages-list content-container">
+                    <li class="nav-image" style="background-image:url('/content/navigation/support-life-image.jpg')"></li>
+                    {{#each pages}}
+                    {{#if name '==' 'Support'}}
+                    {{#if children}}
+                        <li class="navProducts-item nav-header" id="nav-id-{{id}}">
+                            {{> kokatat/components/common/pages-navigation-list}}
+                        </li>
+                    {{/if}}
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </nav>
+        </li>
+        <!-- LIFE -->
+        <li class="navUser-item pages">
+            <button type="button" class="navUser-action" aria-haspopup="true" aria-expanded="false" aria-controls="desktop-nav-life">life
+                <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down"/></svg></i>
+            </button>
+            <nav class="navDropdown navProducts" id="desktop-nav-life">
+                <ul class="navPages-list content-container">
+                    <li class="nav-image" style="background-image:url('/content/navigation/support-life-image.jpg')"></li>
+                    {{#each pages}}
+                    {{#contains name 'Life'}}
+                    {{#if children}}
+                        <li class="navProducts-item nav-header" id="nav-id-{{id}}">
+                            {{> kokatat/components/common/pages-navigation-list}}
+                        </li>
+                    {{/if}}
+                    {{/contains}}
+                    {{/each}}
+                </ul>
+            </nav>
+        </li>
+        <!-- SEARCH -->
+                <li class="navUser-item search">
+                        <button type="button" class="navUser-action navUser-action--quickSearch" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false" aria-label="{{lang 'common.search'}}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 37.928 38.076" aria-hidden="true" focusable="false">
+              <path id="Icon_Search" d="M896.659,1026.829a15.184,15.184,0,0,1,11.681,24.9L918.7,1062.09a1.5,1.5,0,1,1-2.124,2.123l-10.38-10.38a15.189,15.189,0,1,1-9.54-27.005Zm0,27.387a12.148,12.148,0,0,0,8.531-3.5l.006-.01c.005-.005.012-.006.017-.011a12.182,12.182,0,1,0-8.554,3.518Z" transform="translate(-881.339 -1026.704)" stroke="#000" stroke-width="0.25"/>
+            </svg>
+          </button>
+        </li>
+        <!-- CERTIFICATE -->
+        <!-- {{#if settings.gift_certificates_enabled}}
+            <li class="navUser-item">
+                <a class="navUser-action" href="{{urls.gift_certificate.purchase}}">{{lang 'common.gift_cert'}}</a>
+            </li>
+        {{/if}} -->
+        <!-- SIGN IN or REGISTER -->
+        <li class="navUser-item navUser-item--account">
+            {{#if customer}}
+                                <a class="navUser-action" href="{{urls.account.index}}" aria-label="{{lang 'common.account'}}"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 31.446 43.812">
+                    <path id="Icon_Account" d="M27.906,43.812c-.915-7.935-4.142-14.6-12.183-14.6s-11.27,6.669-12.184,14.6H0c1.163-9.9,5.716-18.255,15.724-18.255s14.559,8.352,15.722,18.255ZM15.724,21.906a10.827,10.827,0,0,1-10.7-10.953A10.828,10.828,0,0,1,15.724,0a10.829,10.829,0,0,1,10.7,10.953A10.828,10.828,0,0,1,15.724,21.906Zm0-18.255a7.219,7.219,0,0,0-7.132,7.3,7.218,7.218,0,0,0,7.132,7.3,7.218,7.218,0,0,0,7.132-7.3A7.219,7.219,0,0,0,15.724,3.651Z" fill-rule="evenodd"/>
+                  </svg></a>
+                <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+            {{else}}
+                                <a class="navUser-action" href="{{urls.auth.login}}" aria-label="{{lang 'common.login'}}">
+                  <!-- {{lang 'common.login'}} -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 31.446 43.812">
+                    <path id="Icon_Account" d="M27.906,43.812c-.915-7.935-4.142-14.6-12.183-14.6s-11.27,6.669-12.184,14.6H0c1.163-9.9,5.716-18.255,15.724-18.255s14.559,8.352,15.722,18.255ZM15.724,21.906a10.827,10.827,0,0,1-10.7-10.953A10.828,10.828,0,0,1,15.724,0a10.829,10.829,0,0,1,10.7,10.953A10.828,10.828,0,0,1,15.724,21.906Zm0-18.255a7.219,7.219,0,0,0-7.132,7.3,7.218,7.218,0,0,0,7.132,7.3,7.218,7.218,0,0,0,7.132-7.3A7.219,7.219,0,0,0,15.724,3.651Z" fill-rule="evenodd"/>
+                  </svg>
+                </a>
+            {{/if}}
+        </li>
+        <!-- CART -->
+        <li class="navUser-item navUser-item--cart">
+            <a
+                class="navUser-action"
+                data-cart-preview
+                data-dropdown="cart-preview-dropdown"
+                data-options="align:right"
+                                href="{{urls.cart}}"
+                                aria-label="{{lang 'cart.nav_aria_label'}}">
+                <span class="navUser-item-cartLabel">
+                  <svg id="Icon_Cart" xmlns="http://www.w3.org/2000/svg" width="19" height="21" viewBox="0 0 54.341 40.494">
+                    <path id="Path_396" data-name="Path 396" d="M931.746,1180.725a1.854,1.854,0,0,0-1.447-.7l-38.93-.044-1.187-4.537a1.849,1.849,0,0,0-1.791-1.382h-8.733a1.851,1.851,0,1,0,0,3.7h7.3l1.176,4.5c.008.029.014.055.021.082l5.067,19.365a1.851,1.851,0,0,0,1.791,1.382h30.819a1.854,1.854,0,0,0,1.8-1.435l4.461-19.36A1.858,1.858,0,0,0,931.746,1180.725Zm-7.384,18.661H896.446l-4.108-15.7,35.632.041Z" transform="translate(-877.807 -1174.063)" fill="#1a1818"/>
+                    <ellipse id="Ellipse_21" data-name="Ellipse 21" cx="3.709" cy="3.733" rx="3.709" ry="3.733" transform="translate(18.043 33.028)" fill="#1a1818"/>
+                    <ellipse id="Ellipse_22" data-name="Ellipse 22" cx="3.709" cy="3.733" rx="3.709" ry="3.733" transform="translate(40.412 33.028)" fill="#1a1818"/>
+                  </svg>
+                </span> <span class="countPill cart-quantity"></span>
+            </a>
+            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true" inert></div>
+        </li>
+    </ul>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" inert data-prevent-quick-search-close>
+        {{> kokatat/components/common/quick-search}}
+    </div>
+</nav>

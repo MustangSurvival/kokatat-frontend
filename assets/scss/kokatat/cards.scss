@@ -1,0 +1,214 @@
+﻿//Product Cards
+
+//PRODUCT TITLE
+.product-flag {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    top: -12.5px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.98px;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    opacity: 1;
+    text-align: center;
+    background: #4a7322;
+    width: auto;
+    height: 25px;
+    padding: 10px;
+}
+
+.product {
+    background-color: #ffffff;
+    overflow: visible;
+    &:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,.05);
+    }
+
+    .product-category {
+        text-align: left;
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.98px;
+        color: #959494;
+        opacity: 1;
+    }
+
+    .product-name {
+        text-align: left;
+        font-family: "PFDinDisplayPro-Bold", sans-serif;
+        letter-spacing: 0;
+        font-size: 18px;
+        color: #000000;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+
+    .product-price {
+        text-align: left;
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        line-height: 16px;
+        font-weight: normal;
+        letter-spacing: 0.54px;
+        color: #4a7322 !important;
+        opacity: 1;
+        margin-top: spacing("half");
+        display: flex;
+        .price-section.non-sale-price--withoutTax {
+            padding-bottom: .5rem;
+        }
+        .price--rrp, .price--non-sale, .price--discounted {
+            color: #707070;
+            margin-right: 10px;
+        }
+    }
+}
+
+.compare-checkbox {
+    color: #707070;
+    text-transform: lowercase;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.2px;
+    padding-left: 20px;
+    position: relative;
+    display: none;
+    @include breakpoint("small") {
+        display: block;
+    }
+}
+
+[type=checkbox]+.compare-checkbox::before {
+    content: '';
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-color: $white;
+    left: 0;
+    border: 1px solid $black;
+}
+
+[type=checkbox]:checked+.compare-checkbox::before {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjMwNS4wMDJweCIgaGVpZ2h0PSIzMDUuMDAycHgiIHZpZXdCb3g9IjAgMCAzMDUuMDAyIDMwNS4wMDIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMwNS4wMDIgMzA1LjAwMjsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGZpbGw9IiM4ZGM2NDEiIGQ9Ik0yMTguNDczLDkzLjk3bC05MC41NDYsOTAuNTQ3bC00MS4zOTgtNDEuMzk4Yy00Ljg4Mi00Ljg4MS0xMi43OTYtNC44ODEtMTcuNjc4LDBjLTQuODgxLDQuODgyLTQuODgxLDEyLjc5NiwwLDE3LjY3OA0KCQkJbDUwLjIzNyw1MC4yMzdjMi40NDEsMi40NCw1LjY0LDMuNjYxLDguODM5LDMuNjYxYzMuMTk5LDAsNi4zOTgtMS4yMjEsOC44MzktMy42NjFsOTkuMzg1LTk5LjM4NQ0KCQkJYzQuODgxLTQuODgyLDQuODgxLTEyLjc5NiwwLTE3LjY3OEMyMzEuMjY5LDg5LjA4OSwyMjMuMzU0LDg5LjA4OSwyMTguNDczLDkzLjk3eiIvPg0KCTwvZz4NCjwvZz4NCjwvc3ZnPg0K");
+    background-size: cover;
+}
+
+.related [type=checkbox]+.compare-checkbox::before {
+    display: none;
+    visibility: hidden;
+}
+
+.card {
+    position: relative;
+    padding: spacing("single");
+    margin-bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .card-top {
+        border-top: 3px solid transparent;
+    }
+    .card-title {
+        line-height: 1.3;
+        margin-top: 5px;
+    }
+    .top-divider {
+        border-bottom: 1px solid #707070;
+        margin: 15px auto;
+    }
+
+    .bottom-divider {
+        border-color: #E6E6E6;
+        margin: 15px auto;
+    }
+    .card-img-container {
+        &:after {
+            padding-bottom: 100%;
+        }
+    }
+    .card-bottom {
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+.card:hover {
+    .top-divider {
+        border-bottom: 4px solid #000000;
+    }
+    .card-top {
+        border-top: none;
+    }
+}
+.card-figcaption {
+    text-align: right;
+    .card-figcaption-body {
+        top: 0;
+        transform: none;
+        .quickview {
+            color: #000000;
+            text-transform: lowercase;
+            font-family: "Montserrat", sans-serif;
+            letter-spacing: 0.56px;
+            font-weight: 700;
+
+            &:before {
+                content: '+';
+                color: #4a7322;
+                margin-right: 10px;
+            }
+        }
+        .strike-figcaption {
+            display: none;
+        }
+    }
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    text-align: left;
+    .category {
+        text-transform: lowercase;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+    }
+}
+
+// PLP Optimzation
+
+.card-figure {
+
+    img:nth-child(1) {
+        display: block;
+    }
+
+    img:nth-child(2) {
+        display: none;
+    }
+
+
+    &:not(.single):hover {
+        img:nth-child(1) {
+            display: none;
+        }
+    
+        img:nth-child(2) {
+            display: block;
+        }
+
+    }
+}

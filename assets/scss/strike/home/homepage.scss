@@ -1,0 +1,260 @@
+.strike-home {
+  .strike-cta-btn {
+    &:hover {
+      background-color: #323232;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .grey-bkg {
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+  }
+  .heroCarousel {
+    margin-top: 0;
+    .slick-next,
+    .slick-prev {
+      top: 27%;
+    }
+
+    .marq-links {
+      .button--primary {
+        margin-bottom: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s ease;
+        max-width: 250px;
+        &:hover {
+          transform: scaleX(1.08);
+          transition: all 0.25s ease;
+          .heroCarousel-action {
+            transform: scaleX(0.90909);
+          }
+        }
+      }
+      @include breakpoint("large") {
+        .button--primary {
+          margin: 0 0 12px 0;
+          &:hover {
+            transform: scaleX(1.08) translate(0.66em);
+          }
+        }
+      }
+    }
+    @include breakpoint("small") {
+      .slick-next,
+      .slick-prev {
+        top: 32%;
+      }
+    }
+    @include breakpoint("medium") {
+    }
+  }
+
+  .heroCarousel .slick-list {
+    overflow: hidden;
+  }
+
+  .heroCarousel-image {
+    display: none;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .heroCarousel-action {
+    margin: 0;
+  }
+
+  .heroCarousel-content {
+    background-color: #ffffff;
+    padding: 0;
+    .content-container {
+      margin-top: 3rem;
+    }
+    .copy-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .slide-bg {
+      /*display: none;*/
+      display: block;
+      min-height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      @include breakpoint("small") {
+        min-height: 350px;
+      }
+      @include breakpoint("medium") {
+        min-height: 400px;
+      }
+      @include breakpoint("large") {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-size: cover;
+        background-position: center;
+        min-height: 500px;
+      }
+    }
+
+    .primary-button,
+    .text-link {
+      margin: 0;
+    }
+
+    .primary-button + .text-link {
+      margin-left: 30px;
+    }
+  }
+
+  .content-bg,
+  .content-fg {
+    display: none;
+  }
+
+  .heroCarousel-title {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  .heroCarousel-description {
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  @include breakpoint("large") {
+    .heroCarousel {
+      margin-top: 0;
+      height: 550px;
+    }
+
+    .heroCarousel .slick-list {
+      overflow: inherit;
+    }
+
+    .heroCarousel .slick-next,
+    .heroCarousel .slick-prev {
+      top: calc(50% - 30px);
+    }
+
+    .heroCarousel-slide {
+      height: 500px;
+      .heroCarousel-image {
+        display: none;
+      }
+      .heroCarousel-content {
+        background-color: #f2f2f2;
+        height: 500px;
+        width: 100%;
+        transform: none;
+        top: 0;
+
+        .copy-container {
+          width: 50%;
+          height: auto;
+          background-color: transparent;
+          padding: 50px;
+          position: relative;
+          z-index: 2;
+          text-align: left;
+
+          &.bg-white {
+            background-color: #ffffff;
+          }
+
+          .h5-subHead-lg {
+            margin-bottom: 5px;
+          }
+        }
+
+        .content-container {
+          position: relative;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding-left: 6rem;
+          padding-right: 6rem;
+        }
+
+        .marq-links {
+          display: flex;
+          align-items: center;
+          margin-left: 0;
+
+          // .heroCarousel-action {
+          //   // margin-right: 30px;
+          // }
+        }
+
+        &.left-content {
+          .content-bg {
+            display: block;
+            right: 0;
+            top: 10px;
+          }
+
+          .content-fg {
+            display: block;
+            left: 45%;
+            bottom: -100px;
+          }
+        }
+
+        &.right-content {
+          .content-container {
+            justify-content: flex-end;
+          }
+
+          .content-bg {
+            display: block;
+            left: 0;
+          }
+
+          .content-fg {
+            display: block;
+            right: 45%;
+          }
+        }
+
+        .content-bg {
+          width: 57.8%;
+          position: absolute;
+          z-index: 1;
+          top: 30px;
+        }
+
+        .content-fg {
+          position: absolute;
+          z-index: 3;
+          width: 29%;
+          bottom: -60px;
+          top: inherit;
+        }
+
+        .heroCarousel-title {
+          font-size: 40px;
+          line-height: 45px;
+          letter-spacing: 0;
+        }
+      }
+
+      .home-body-banner {
+        box-sizing: border-box;
+        display: inline-flex;
+        height: 150px;
+        padding: 60px;
+
+        p {
+          margin: auto 10px;
+        }
+      }
+    }
+  }
+}

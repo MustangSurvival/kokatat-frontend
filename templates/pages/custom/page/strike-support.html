@@ -1,0 +1,46 @@
+{{#partial "page"}}
+
+  <main class="page" id="support-pages">
+    <div class="secondary-marquee">
+      <div class="heroCarousel-slide">
+        <div class="heroCarousel-image-wrapper">
+          <img class="heroCarousel-image" alt="" title="" src="">
+          <div class="placeholder">
+            <canvas height="450" width="1480"></canvas>
+          </div>
+        </div>
+        <div class="content-container">
+          <div class="content-wrapper">
+            <div class="copy-container">
+              {{#unless theme_settings.hide_page_heading }}
+                <h1 class="page-heading">{{ page.title }}</h1>
+              {{/unless}}
+                <p class="page-subhead"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="support-container">
+        <section class="page-content page-content--centered">
+            <h2 class="top-header"></h2>
+            <div class="copy-block body-copy-rg"></div>
+            <div class="support-video embed-responsive"></div>
+            <h3 class="top-accordion-header accordion-header"></h3>
+            <div class="top-accordion body-copy-rg"></div>
+            <h3 class="sub-accordion-header accordion-header"></h3>
+            <div class="sub-accordion body-copy-rg"></div>
+            <h3 class="pdf-header"></h3>
+            <div class="pdf-files body-copy-rg"></div>
+        </section>
+      </div>
+      <div class="support-panel-container">
+        {{> strike/components/common/support-panel}}
+      </div>
+    </div>
+  </main>
+{{/partial}}
+
+{{> layout/strike-layout}}

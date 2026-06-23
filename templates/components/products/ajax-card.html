@@ -1,0 +1,154 @@
+<article class="card {{#if alternate}}card--alternate{{/if}}" {{#if settings.data_tag_enabled}} data-event-type="{{event}}" data-entity-id="{{product.id}}" data-position="{{position}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"  {{/if}}>
+    {{#each product.category}}
+        {{#contains this 'New'}}
+        <div class="product-flag">new</div>
+        {{/contains}}
+    {{/each}}
+    <figure class="card-figure single">
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+            {{#if theme_settings.product_sale_badges '===' 'sash'}}
+                <div class="sale-flag-sash">
+                    <span class="sale-text">On Sale!</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'topleft'}}
+                <div class="sale-flag-side">
+                    <span class="sale-text">On Sale!</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'burst'}}
+                <div class="starwrap">
+                    <div class="sale-text-burst">On Sale!</div>
+                    <div class="sale-flag-star"></div>
+                </div>
+            {{/if}}
+        {{/or}}
+        <a href="{{product.url}}" class="card-figure__link" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>
+            <div class="card-img-container">
+                {{> components/common/responsive-img
+                    image=product.main_image
+                    class="card-image"
+                    fallback_size=theme_settings.productgallery_size
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                }}
+            </div>
+        </a>
+
+        <figcaption class="card-figcaption">
+            <div class="card-figcaption-body">
+                {{#unless hide_product_quick_view}}
+                    {{#if theme_settings.show_product_quick_view}}
+                        {{#if settings.data_tag_enabled}}
+                            <a class="button button--small card-figcaption-button quickview" data-event-type="product-click" data-product-id="{{product.id}}">{{lang 'products.quick_view'}}</a>
+                        {{else}}
+                            <a class="button button--small card-figcaption-button quickview" data-product-id="{{product.id}}">{{lang 'products.quick_view'}}</a>
+                        {{/if}}
+                    {{/if}}
+                {{/unless}}
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{#if show_cart_action}}
+                        {{#if has_options}}
+                            <!-- <a href="{{product.url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a> -->
+                        {{/if}}
+                        {{#if pre_order}}
+                            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
+                        {{/if}}
+
+                        {{#if out_of_stock_message }}
+                            <a href="{{product.url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{product.id}}">{{out_of_stock_message}}</a>
+                        {{/if}}
+                    {{/if}}
+                {{/or}}
+            </div>
+        </figcaption>
+    </figure>
+    <div class="card-body">
+        <div class="card-top">
+            <hr class="top-divider">
+            {{#and rating show_rating}}
+            <p class="card-text" data-test-info-type="productRating">
+                <span class="rating--small">
+                    {{> components/products/ratings rating=product.rating}}
+                </span>
+            </p>
+            {{/and}}
+            {{#if brand.name}}
+            <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
+            {{/if}}
+
+            {{#each product.custom_fields}}
+                {{#if name '==' 'Gender'}}
+                <div class="eyebrow category">{{value}}</div>
+                {{/if}}
+            {{/each}}
+
+            <h4 class="card-title">
+                <a href="{{product.url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{product.title}}</a>
+            </h4>
+            <div class="card-text product-price" data-test-info-type="price">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{> components/products/price price=product.price}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+            {{> components/products/bulk-discount-rates}}
+        </div>
+        <div class="card-bottom">
+            <hr class="bottom-divider">
+            <div class="bottom-row">
+                {{#if show_compare}}
+                  <input hidden type="checkbox" name="products[]" value="{{product.id}}" id="compare-{{product.id}}" data-compare-id="{{product.id}}">
+                  <label class="compare-checkbox" for="compare-{{product.id}}">
+                    &nbsp;{{lang 'products.compare'}}
+                  </label>
+                {{/if}}
+                <div class="card-swatches">
+                {{#each product.options}}
+                    {{#if this.display_name '==' 'Color'}}
+                        <div class="form-field" data-product-attribute="swatch">
+                            <label class="form-label form-label--alternate form-label--inlineSmall">
+                                {{this.display_name}}:
+                                <span data-option-value></span>
+
+                                {{#if required}}
+                                    <small>{{lang 'common.required'}}</small>
+                                {{/if}}
+                            </label>
+
+                            {{#each this.values}}
+                                <input id="attribute_swatch_{{../id}}_{{id}}" class="form-radio" type="radio" name="attribute[{{../id}}]" value="{{id}}" {{#if selected}}checked data-default{{/if}} {{#if ../required}}required{{/if}}>
+                                <label class="form-option form-option-swatch" for="attribute_swatch_{{../id}}_{{id}}" onClick="cardSwatchX(event)" data-product-attribute-value="{{id}}" data-product-id="{{../../product.id}}">
+                                    {{#if image}}
+                                        <span class='form-option-variant form-option-variant--pattern' title="{{this.label}}" style="background-image: url('{{getImage image "swatch_option_size"}}');"></span>
+                                    {{/if}}
+                                    {{#if data.[2]}}
+                                        <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                                        <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
+                                        <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[2]}}"></span>
+                                    {{else}}
+                                        {{#if data.[1]}}
+                                            <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                                            <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[1]}}"></span>
+                                        {{else}}
+                                            {{#if data.[0]}}
+                                                <span class='form-option-variant form-option-variant--color' title="{{this.label}}" style="background-color: #{{data.[0]}}"></span>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/if}}
+                                    {{#if pattern}}
+                                        <span class="form-option-expanded">
+                                            <span class="form-option-image" style="background-image: url('{{getImage image 'core-swatch'}}');"></span>
+                                        </span>
+                                    {{/if}}
+                                </label>
+                            {{/each}}
+                        </div>
+
+
+                    {{/if}}
+                {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

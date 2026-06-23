@@ -1,0 +1,55 @@
+#support-panel {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 60px;
+
+  .support-panel-content {
+    width: 100%;
+    color: #000000;
+
+    .support-phone {
+      font-family: "PFDinDisplayPro-Bold", sans-serif;
+      font-size: 24px;
+      line-height: 25px;
+      a {
+        text-decoration: none;
+      }
+      
+    }
+    .support-subtext {
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      line-height: 25px;
+      color: #707070;
+      letter-spacing: 0.24px;
+      font-weight: 500;
+    }
+
+    .support-button {
+      margin-top: 10px;
+      float: inherit;
+    }
+    
+    @include breakpoint("small") {
+      width: 50%;
+    }
+    
+    @include breakpoint("medium") {
+      width: 250px;
+      margin-top: 25px;
+      height: 350px;
+      text-align: left;
+
+      .support-button {
+        float: left;
+      }
+    }
+    
+    hr {
+      margin: 1.25rem 0;
+      width: 100%;
+    }
+  }
+}

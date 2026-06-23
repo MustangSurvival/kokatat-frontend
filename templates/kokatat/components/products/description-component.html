@@ -1,0 +1,27 @@
+<section id="description_component" class="content-container product-component">
+    <div class="copy-content">
+        <div class="heading">
+            <h2></h2>
+        </div>
+        <div class="content">
+            <p></p>
+        </div>
+    </div>
+    <div class="image">
+        {{> components/common/responsive-img
+            image=product.main_image
+            class="productView-image--default"
+            fallback_size=theme_settings.product_size
+            lazyload=theme_settings.lazyload_mode
+            default_image=theme_settings.default_image_product
+            otherAttributes="data-main-image"
+        }}
+    </div>
+    <div class="desktop-only">
+        <img class="image" src="{{cdn 'img/product/feature_img.png'}}">
+        <div class="content">
+            <div class="h6-subHead-sm"></div>
+            <p></p>
+        </div>
+    </div>
+</section>

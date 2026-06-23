@@ -1,0 +1,13 @@
+<nav class="navProducts" id="desktop-nav-products">
+    <ul class="navPages-list content-container">
+        {{#each categories}}
+            {{#if children}}
+                {{#if name '==' 'Strike'}}
+                    <li class="navProducts-item nav-header" id="nav-id-{{id}}">
+                        {{> strike/components/common/desktop-navigation-list}}
+                    </li>
+                {{/if}}
+            {{/if}}
+        {{/each}}
+    </ul>
+</nav>

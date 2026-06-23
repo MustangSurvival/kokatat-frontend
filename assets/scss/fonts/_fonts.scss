@@ -1,0 +1,22 @@
+@import "clear-sans";
+
+$fonts: $fontFamily-sans $fontFamily-serif $fontFamily-mono $fontFamily-headings $fontFamily-hero;
+
+@if contains($fonts, "'Clear Sans', sans-serif") {
+    @include clear-sans;
+}
+
+@import url("//hello.myfonts.net/count/2f912a");
+
+@font-face {
+    font-family: 'PFDinDisplayPro-Bold';
+    src: url('../fonts/2F912A_0_0.eot');
+    src: url('../fonts/2F912A_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2F912A_0_0.woff2') format('woff2'),url('../fonts/2F912A_0_0.woff') format('woff'),url('../fonts/2F912A_0_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Gotham-Ultra";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/gotham-ultra.otf");
+}

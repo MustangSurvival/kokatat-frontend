@@ -1,0 +1,57 @@
+{{#partial "page"}}
+
+  {{#each shipping_messages}}
+    {{> components/common/alert-info message}}
+  {{/each}}
+
+  <div class="homepage">
+    <!-- HERO CAROUSEL -->
+    <section id="homepage_marquee" class="heroCarousel">
+
+    </section>
+
+    <div class="main full">
+      <div class="content-container">
+        <!-- HOMEPAGE NAVIGATION -->
+        {{> kokatat/components/home/home-nav}}
+
+        <!-- CTA BLOCKS -->
+        {{> kokatat/components/home/home-cta}}
+      </div>
+
+      <div class="grey-bkg">
+        <!-- CLEARANCE BANNER -->
+        {{> kokatat/components/home/home-banner}}
+
+        <div class="content-container">
+
+          <!-- FEATURED -->
+          {{> kokatat/components/home/home-featured}}
+
+        </div>
+
+        <!-- CUSTOM SUIT BUILDER BANNER -->
+        {{> kokatat/components/home/home-csb-banner}}
+
+        <div class="content-container blog-cta">
+
+          <!-- BLOG CTA -->
+          {{> kokatat/components/home/home-blog-cta}}
+        </div>
+
+      </div>
+
+      <!-- INSTAGRAM FEED -->
+    {{> kokatat/components/home/home-instagram}}
+
+    </div>
+
+    <div id="component_templates" hidden>
+        {{> kokatat/components/marquee-slide}}
+        <div id="productCarousel">
+            {{> kokatat/components/product-carousel}}
+        </div>
+    </div>
+  </div>
+{{/partial}}
+{{> layout/base}}

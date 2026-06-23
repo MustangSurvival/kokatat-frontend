@@ -1,0 +1,36 @@
+<div id="facetedSearch" class="facetedSearch sidebarBlock">
+    {{> kokatat/components/faceted-search/selected-facets this.selected}}
+
+    <a href="#facetedSearch-navList" role="button" class="facetedSearch-toggle toggleLink" data-collapsible>
+
+        <span class="facetedSearch-toggle-indicator button--primary">
+            <span class="toggleLink-text toggleLink-text--on">
+                {{lang 'search.faceted.hide-filters'}}
+            </span>
+
+            <span class="toggleLink-text toggleLink-text--off">
+                {{lang 'search.faceted.show-filters'}}
+            </span>
+        </span>
+    </a>
+
+    {{#any facets visible=true}}
+        <div
+            id="facetedSearch-navList"
+            class="facetedSearch-navList blocker-container">
+            <div class="accordion accordion--navList">
+                {{#each facets}}
+                    {{#if visible}}
+                    {{#if facet '==' 'Color'}}
+                        {{> components/faceted-search/facets/color-swatch}}
+                        {{else}}
+                        {{{dynamicComponent 'components/faceted-search/facets'}}}
+                    {{/if}}
+                    {{/if}}
+                {{/each}}
+            </div>
+
+            <div class="blocker" style="display: none;"></div>
+        </div>
+    {{/any}}
+</div>

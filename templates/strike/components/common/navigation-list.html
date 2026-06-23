@@ -1,0 +1,17 @@
+<a class="h6-subHead-sm navPages-action has-subMenu" href="{{url}}" data-collapsible="navPages-{{toLowerCase (hyphenate id)}}">
+    Products
+    <span class="toggle-indicator"></span>
+</a>
+<div class="navPage-subMenu" id="navPages-{{toLowerCase (hyphenate id)}}" aria-hidden="true" tabindex="-1">
+    <ul class="navPage-subMenu-list">
+        {{#each children}}
+            <li class="navPage-subMenu-item">
+                {{#if (occurrences name "Strike ") '==' 0}}
+                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+                {{else}}
+                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{#replace 'Strike ' name}}{{/replace}}</a>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+</div>

@@ -1,0 +1,35 @@
+{{#partial "page"}}
+
+  <main class="page" id="support-pages">
+    <div class="secondary-marquee">
+      <div class="heroCarousel-slide">
+        <div class="heroCarousel-image-wrapper">
+          <img class="heroCarousel-image" alt="" title="" src="">
+          <div class="placeholder">
+            <canvas height="450" width="1480"></canvas>
+          </div>
+        </div>
+        <div class="content-container">
+          <div class="content-wrapper">
+            <div class="copy-container">
+              {{#unless theme_settings.hide_page_heading }}
+                <h1 class="page-heading">{{ page.title }}</h1>
+              {{/unless}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <section class="support-container">
+        {{{page.content}}}
+      </section>
+      <div class="support-panel-container">
+        {{> strike/components/common/support-panel}}
+      </div>
+    </div>
+  </main>
+{{/partial}}
+
+{{> layout/strike-layout}}

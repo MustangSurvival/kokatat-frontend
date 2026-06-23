@@ -1,0 +1,17 @@
+<nav class="navProducts" id="desktop-nav-shop">
+    <ul class="navPages-list content-container">
+        {{#each categories}}
+        {{#unless name '==' 'Strike'}}
+        {{#if children}}
+            <li class="navProducts-item nav-header" id="nav-id-{{id}}">
+                {{> kokatat/components/common/desktop-navigation-list}}
+            </li>
+        {{/if}}
+        {{/unless}}
+        {{/each}}
+        <div class="cta-block" style="background-image:url('/content/navigation/catalog-image.jpg')">
+            <a class="kok-btn btn-arrow primary-button" href="/accessories/repair/"><span>shop repairs</span>
+            </a>
+        </div>
+    </ul>
+</nav>

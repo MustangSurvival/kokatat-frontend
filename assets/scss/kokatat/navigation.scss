@@ -1,0 +1,173 @@
+.navProducts, .navDropdown {
+    position: absolute;
+    background-color: stencilColor("color-greyLighter");
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.navProducts {
+    box-shadow: 0px 0px 5px #bababa;
+
+    // Keep decorative media from blocking submenu link clicks.
+    .nav-image,
+    .cta-block {
+        pointer-events: none;
+    }
+
+    .navPage-subMenu-item,
+    .navPage-subMenu-action {
+        position: relative;
+        z-index: 2;
+        pointer-events: auto;
+    }
+
+    .nav-header {
+        width: 25%;
+    }
+    .navPages-action.h6-subHead-sm {
+        border-bottom: 4px solid #000000;
+        padding: 0;
+        padding-bottom: 3px;
+        width: calc(100% - 80px);
+        
+        &.no-link {
+            color: $black;
+            cursor: default;
+        }
+    }
+    .navPages-list.content-container {
+        margin: 3rem auto;
+        display: flex;
+        align-items: flex-start;
+
+        @include breakpoint("medium") {
+            padding-left: 3rem;
+            padding-right: 3rem;
+            .navPage-subMenu {
+                display: block;
+                margin-top: 15px;
+            }
+            .navPage-subMenu-list {
+                display: flex;
+                flex-direction: column;
+                .navPage-subMenu-item {
+                    width: 100%;
+                    padding: 0;
+                    &.all {
+                        display: none;
+                    }
+                    .navPage-subMenu-action {
+                        padding: 0;
+                        padding-top: spacing("quarter");
+                        margin: 0;
+                    }
+                }
+            }
+            .cta-block {
+                display: flex;
+                width: 35%;
+                height: 35%;
+                background-size: cover;
+                background-position: bottom;
+                background-repeat: no-repeat;
+                align-items: center;
+                justify-content: center;
+                &:after {
+                    content: '';
+                    display: block;
+                    padding-bottom: 100%;
+                }
+            }
+            .nav-image {
+                display: flex;
+                width: 70%;
+                margin-right: 3rem;
+                height: 400px;
+                background-size: cover;
+                background-position: bottom;
+                background-repeat: no-repeat;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        @media screen and (min-width: 1980px) {
+            padding: 0
+        }
+    }
+}
+.navUser-item.shop {
+    @include breakpoint("medium") {
+        .navPages-action-moreIcon svg {
+            fill: stencilColor("color-textLink--hover");
+            stroke: stencilColor("color-textLink--hover");
+        }
+
+        &.is-forced-closed {
+            > .navProducts {
+                display: none !important;
+            }
+        }
+
+        &:hover,
+        &:focus-within {
+            .navUser-action {
+                padding-left: 10rem;
+            }
+            > .navProducts {
+                display: block;
+            }
+        }
+    }
+}
+
+.navUser-item.pages {
+    @include breakpoint("medium") {
+        .navPages-action-moreIcon svg {
+            fill: stencilColor("color-textLink--hover");
+            stroke: stencilColor("color-textLink--hover");
+        }
+
+        &.is-forced-closed {
+            > .navDropdown {
+                display: none !important;
+            }
+        }
+
+        &:hover,
+        &:focus-within {
+            > .navDropdown {
+                display: block;
+                position: absolute;
+                background-color: stencilColor("color-greyLighter");
+                padding: 1.5rem;
+                .navPage-subMenu-item > .navPage-subMenu-action {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+/*mobile menu*/
+.navPages-container {
+    .navPages {
+        .navPages-item {
+            border-top: 1px solid #E6E6E6;
+            &:first-child {
+                border-top: none;
+            }
+        }
+    }
+}
+.h6-subHead-sm {
+    .plus-icon svg {
+        height: 12px;
+        width: 12px;
+    }
+    @include breakpoint("medium") {
+        border-top: none;
+        .plus-icon svg {
+            display: none;
+        }
+    }
+}

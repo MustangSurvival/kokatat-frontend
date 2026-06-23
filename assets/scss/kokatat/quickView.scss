@@ -1,0 +1,25 @@
+
+.quickView.modal-body {
+    background-color: stencilColor("color-greyLighter");
+}
+
+.productView.productView--quickView {
+    .productView-images, .productView-details {
+        padding: 1.5rem;
+        .productView-image {
+            padding-left: 1rem;
+        }
+        .options-container {
+            padding-top: 1rem;
+        }
+        .productView-description {
+            padding-left: 0;
+        }
+    }
+    .productView-info {
+        display: none;
+    }
+    .form-wishlist, .share-container {
+        display: none;
+    }
+}

@@ -1,0 +1,5 @@
+{
+  "normalStoreUrl": "https://your-store.mybigcommerce.com",
+  "port": 3000,
+  "accessToken": "REPLACE_WITH_YOUR_STENCIL_CLI_TOKEN"
+}

@@ -1,0 +1,13 @@
+<a class="h6-subHead-sm navPages-action has-subMenu" href="{{url}}">
+    Products
+    <span class="toggle-indicator"></span>
+</a>
+<div class="navPage-subMenu" id="navPages-{{toLowerCase (hyphenate id)}}" aria-hidden="true" tabindex="-1">
+    <ul class="navPage-subMenu-list">
+        {{#each children}}
+        <li class="navPage-subMenu-item">
+            <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>

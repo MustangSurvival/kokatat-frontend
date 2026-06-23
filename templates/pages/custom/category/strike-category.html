@@ -1,0 +1,59 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="category-marquee">
+
+</div>
+{{#unless theme_settings.hide_category_page_heading }}
+    {{{region name="category_below_header"}}}
+{{/unless}}
+
+<div class="strike-category page category">
+    <div class="content-container">
+        <div class="heading-container">
+            <h1 class="page-heading">{{category.name}}</h1>
+                <div class="actionBar-container">
+                {{> components/products/filter sort=pagination.category.sort}}
+                {{#if show_compare}}
+                    <a class="compare-button" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--positive countPill--alt"></span></a>
+                {{/if}}
+            </div>
+        </div>
+
+            <aside class="page-sidebar" id="faceted-search-container">
+                {{> kokatat/components/category/sidebar}}
+            </aside>
+
+        <main class="page-content" id="product-listing-container">
+            {{#if category.products}}
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+            <div class="category-description"></div>
+            {{{region name="category_below_content"}}}
+        </main>
+    </div>
+</div>
+
+<div id="component_templates" hidden>
+    {{> kokatat/components/category/onsite-ad}}
+</div>
+
+{{/partial}}
+{{> layout/strike-layout}}

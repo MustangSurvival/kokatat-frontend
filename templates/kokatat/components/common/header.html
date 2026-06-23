@@ -1,0 +1,35 @@
+{{#if banners.top}}
+<div class="banners" data-banner-location="top">
+  {{#each (limit banners.top_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+      <div data-event-type="promotion-click">
+        {{{this.content}}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+{{/if}}
+<header class="header container" role="banner">
+  <div class="content-container">
+    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+      <span class="mobileMenu-toggleIcon">Toggle menu</span>
+    </a>
+    {{> kokatat/components/common/navigation}}
+
+    {{#if page_type '===' 'default'}}
+        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> kokatat/components/common/store-logo}}
+        </h1>
+    {{else}}
+        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> kokatat/components/common/store-logo}}
+        </div>
+    {{/if}}
+  </div>
+<div class="navPages-container" id="menu" data-menu>
+{{> kokatat/components/common/navigation-menu}}
+</div>
+</header>
+{{#if page_type '===' 'default'}}
+ {{{region name="header_bottom"}}} 
+{{/if}}

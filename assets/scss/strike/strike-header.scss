@@ -1,0 +1,144 @@
+﻿header.strike.header {
+    background-color: #323232;
+    .header-logo {
+        img {
+            max-height: 5rem;
+        }
+    }
+    .navUser-item {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        &:hover {
+            .navUser-action {
+                border-bottom: 4px solid #4a7322;
+            }
+        }
+    }
+    .navUser-action {
+        color: #E6E6E6;
+        padding: 0;
+        padding-bottom: .5rem;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        border-bottom: 4px solid transparent;
+        svg {
+            fill: #E6E6E6;
+        }
+    }
+    .navProducts, .navDropdown {
+        width: auto;
+        left: unset;
+        right: unset;
+        .nav-header {
+            .h6-subHead-sm {
+                display: none;
+            }
+        }
+    }
+    .navPages {
+        background-color: #323232;
+        .navPages-action {
+            color: #E6E6E6;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            &.is-open {
+                padding-bottom: .5rem;
+            }
+        }
+        .navPage-subMenu-list {
+            column-count: unset;
+            padding-bottom: 15px;
+        }
+        .navPage-subMenu-item .navPages-action {
+            text-transform: capitalize;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+    }
+    .navPages-container {
+        top: 80px;
+        box-shadow: 0px 0px 5px grey;
+    }
+    .mobileMenu-toggle {
+        .mobileMenu-toggleIcon {
+            background: #FFFFFF;
+
+        }
+        &.is-open {
+            .mobileMenu-toggleIcon {
+                background: transparent;
+            }
+        }
+        .mobileMenu-toggleIcon::before, .mobileMenu-toggleIcon::after {
+            background: #FFFFFF;
+        }
+    }
+    #mobile-quicksearch .form-input {
+        background-color: #C1C1C1;
+        border-color: #C1C1C1;
+    }
+    #mobile-quicksearch .form-input::placeholder {
+        color: #F2F2F2;
+    }
+    @include breakpoint("medium") {
+        .header-logo {
+            img {
+                padding: 1rem;
+            }
+        }
+        .navProducts {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-left: -20px;
+            .nav-header {
+                width: auto;
+            }
+            .navPages-list.content-container {
+                padding: 0;
+                margin: 0;
+                .navPage-subMenu {
+                    margin-top: 0;
+                    .navPage-subMenu-item {
+                        border-bottom: 1px solid #505153;
+                        &.all {
+                            display: none;
+                        }
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                        &:hover {
+                            /*background-color: #948E7D;*/
+                            font-weight: bold;
+                        }
+                        .navPages-action {
+                            text-transform: capitalize;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            color: #505153;
+                        }
+                    }
+                }
+            }
+        }
+        .navUser-item {
+            &.shop {
+                &:hover {
+                    .navUser-action {
+                        padding-left: 0;
+                    }
+                }
+            }
+            &.pages {
+                &:hover {
+
+                    .navDropdown {
+                        padding-left: 30px;
+                        padding-right: 30px;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

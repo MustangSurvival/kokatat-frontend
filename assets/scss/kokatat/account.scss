@@ -1,0 +1,174 @@
+/*Account Pages Styling*/
+
+.new-customer {
+    a {
+        text-decoration: none;
+    }
+}
+
+.login-row {
+    .form-actions {
+        .forgot-password {
+            margin-top: 10px;
+        }
+    }
+}
+
+.account-body {
+    .form {
+        margin-bottom: 53px;
+    }
+}
+
+.navBar--account {
+    display: block;
+    margin-bottom: 0;
+    .navBar-item {
+        font-size: 14px;
+        letter-spacing: 0.7px;
+        color: #707070;
+        font-family: "Montserrat", sans-serif!important;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .account-head {
+        margin: 0;
+    }
+    @include breakpoint("medium") {
+        &.navBar--sub {
+            margin-bottom: 4rem;
+        }
+    }
+}
+
+.account {
+    padding: 1.5rem;
+    section {
+        margin: 20px auto;
+    }
+    .productGrid {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 3rem 1.5rem;
+        .product {
+            display: flex;
+            flex-direction: column;
+            margin: 1.5rem;
+            flex-basis: 100%;
+            .card-bottom {
+                display: none;
+            }
+        }
+        @include breakpoint("small") {
+            .product {
+                flex-basis: 40%;
+            }
+        }
+        @include breakpoint("medium") {
+            section {
+                margin: 80px auto;
+            }
+            .product {
+                flex-basis: 28%;
+            }
+        }
+        @include breakpoint("large") {
+            .product {
+                flex-basis: 20%;
+            }
+        }
+    }
+}
+.account-created {
+    margin-top: 120px;
+    margin-bottom: 180px;
+    .button--primary {
+        max-width: 300px;
+    }
+}
+
+/*Address Page*/
+.addressList {
+    display: flex;
+    flex-wrap: wrap;
+    .address {
+        border: 1px solid #f2f2f2;
+        padding: 0;
+        margin: 0 1rem;
+        margin-bottom: 1.5rem;
+        .form-actions {
+            margin-top: 1rem;
+            position: static;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 0;
+            .button--small {
+            width: 40%;
+            }
+        }
+        .panel--address {
+            background-color: #f2f2f2;
+            height: 100%;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: remCalc(250px);
+            .panel-body {
+                min-height: unset;
+                border: 0;
+                padding: 0;
+                margin-bottom: 0;
+            }
+        }
+        .panel--newAddress {
+            background-color: transparent;
+        }
+        @include breakpoint("small") {
+            width: 45%;
+        }
+        @include breakpoint("large") {
+            width: 30%;
+        }
+    }
+}
+
+/*Payment Methods Page*/
+.paymentMethodsGrid {
+    .paymentMethod {
+
+        .paymentMethod-form {
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            .button {
+                margin: 0;
+                width: 40%;
+            }
+        }
+
+    }
+}
+
+/*WishLists Page*/
+
+.wishlist-form-actions {
+    .form-actions {
+        display: flex;
+        justify-content: space-around;
+        .button--primary {
+            margin: 0;
+        }
+        .button {
+
+        }
+    }
+}
+
+/*Error Page*/
+.form-prefixPostfix .button {
+  padding: 0 30px;
+    @include breakpoint("small") {
+      width: auto;
+    }
+}
