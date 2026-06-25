@@ -27,7 +27,7 @@
                         {{/if}}
                     </a>
                     {{#if children}}
-                    <div class="navPage-subMenu" id="navPages-{{name}}" aria-hidden="true" tabindex="-1" inert>
+                    <div class="navPage-subMenu" id="navPages-{{name}}" aria-hidden="true" inert>
                         <ul class="navPage-subMenu-list">
                             {{#each children}}
                             <li class="navPage-subMenu-item">
@@ -48,7 +48,7 @@
                         {{/if}}
                     </a>
                     {{#if children}}
-                    <div class="navPage-subMenu" id="navPages-{{name}}" aria-hidden="true" tabindex="-1" inert>
+                    <div class="navPage-subMenu" id="navPages-{{name}}" aria-hidden="true" inert>
                         <ul class="navPage-subMenu-list">
                             {{#each children}}
                             {{#unless name '==' 'Dealer Locator'}}
@@ -79,7 +79,7 @@
                 <a class="h6-subHead-sm navPages-action has-subMenu" href="#" data-collapsible="navPages-currency" aria-controls="navPages-currency" aria-expanded="false">
                     {{lang 'common.currency' code=currency_selector.active_currency_code}}
                 </a>
-                <div class="navPage-subMenu" id="navPages-currency" aria-hidden="true" tabindex="-1" inert>
+                <div class="navPage-subMenu" id="navPages-currency" aria-hidden="true" inert>
                     <ul class="navPage-subMenu-list">
                         {{#each currency_selector.currencies}}
                         <li class="navPage-subMenu-item">
@@ -118,7 +118,7 @@
                 <a class="navPages-action has-subMenu" href="{{urls.account.index}}" data-collapsible="navPages-account">
                     {{lang 'common.account'}}
                 </a>
-                <div class="navPage-subMenu" id="navPages-account" aria-hidden="true" tabindex="-1" inert>
+                <div class="navPage-subMenu" id="navPages-account" aria-hidden="true" inert>
                     <ul class="navPage-subMenu-list">
                         <li class="navPage-subMenu-item">
                             <a class="navPage-subMenu-action navPages-action" href="{{urls.account.orders.all}}">{{lang 'account.nav.orders'}}</a>

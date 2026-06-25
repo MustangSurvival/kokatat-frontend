@@ -44,7 +44,16 @@ export default class FeaturedBlogPost extends ComponentAbstract {
 
             if (this.validateFieldData(this.fieldData.relatedProducts) && this.validateFieldData(this.fieldData.relatedProducts.selected_products) && this.fieldData.relatedProducts.selected_products.length > 0) {
                 if (templateInstance.querySelector('.product-img-carousel') !== null) {
-                    const productCarousel = $(templateInstance.querySelector('.product-img-carousel')).slick({
+                    const focusableSelectors = 'a, input, button, select, textarea, [tabindex]';
+                    function syncSlideTabindex(slider) {
+                        slider.find('.slick-slide[aria-hidden="true"]').find(focusableSelectors).attr('tabindex', '-1');
+                        slider.find('.slick-slide:not([aria-hidden="true"])').find(focusableSelectors).each(function () {
+                            $(this).removeAttr('tabindex');
+                        });
+                    }
+                    const productCarousel = $(templateInstance.querySelector('.product-img-carousel'))
+                        .on('init afterChange', (event, slick) => syncSlideTabindex($(slick.$slider)))
+                        .slick({
                         dots: false,
                         arrows: true,
                         infinite: false,
