@@ -5,11 +5,12 @@ export default ($slides) => {
         const $slide = $(slide);
         const tabIndex = $slide.hasClass('slick-active') ? 0 : -1;
 
+        if (!$slide.attr('role')) $slide.attr('role', 'group');
+
         if ($slide.is(FOCUSABLE_ELEMENTS_SELECTOR)) {
             $slide.attr('tabindex', tabIndex);
-            if (!$slide.attr('role')) $slide.attr('role', 'group');
         }
-        
+
         $slide.find(FOCUSABLE_ELEMENTS_SELECTOR).each((index, child) => {
             $(child).attr('tabindex', tabIndex);
         });

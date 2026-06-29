@@ -1,5 +1,5 @@
 const navItemSelector = '.navUser-item.shop, .navUser-item.pages';
-const navTriggerSelector = '.navUser-action[role="button"], .navUser-action[aria-haspopup="true"]';
+const navTriggerSelector = '.navUser-action[aria-controls]';
 const forcedClosedClass = 'is-forced-closed';
 const expandedClass = 'is-nav-expanded';
 

@@ -50,7 +50,17 @@ export default class ContentfulHomePage extends ContentfulAbstract {
 
 
                     document.querySelector('#homepage_marquee.heroCarousel').querySelector('div').classList.add('heroCarousel-slide--first');
-                    $(document.querySelector('#homepage_marquee.heroCarousel')).slick({
+                    const $heroCarousel = $(document.querySelector('#homepage_marquee.heroCarousel'));
+                    const syncHeroTabindex = (slider) => {
+                        slider.find('.slick-slide').each(function () {
+                            if (!$(this).attr('role')) $(this).attr('role', 'group');
+                        });
+                        slider.find('.slick-slide[aria-hidden="true"]').find('a, button, input, [tabindex]').attr('tabindex', '-1');
+                        slider.find('.slick-slide:not([aria-hidden="true"])').find('a, button, input, [tabindex]').each(function () { $(this).removeAttr('tabindex'); });
+                    };
+                    $heroCarousel
+                        .on('init afterChange', (e, slick) => syncHeroTabindex($(slick.$slider)))
+                        .slick({
                         arrows: true,
                         mobileFirst: true,
                         slidesToShow: 1,
