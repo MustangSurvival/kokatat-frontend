@@ -26,8 +26,15 @@ export default class ProductCarousel extends ComponentAbstract {
                 });
             }
 
+            function initSlideRoles(slider) {
+                slider.find('.slick-slide').each((i, slide) => {
+                    if (!$(slide).attr('role')) $(slide).attr('role', 'group');
+                });
+            }
+
             const productCarousel = $(templateInstance.querySelector('.product-slider'))
-                .on('init afterChange', (event, slick) => syncSlideTabindex($(slick.$slider)))
+                .on('init', (event, slick) => { syncSlideTabindex($(slick.$slider)); initSlideRoles($(slick.$slider)); })
+                .on('afterChange', (event, slick) => syncSlideTabindex($(slick.$slider)))
                 .slick({
                 dots: false,
                 arrows: false,
@@ -97,7 +104,7 @@ export default class ProductCarousel extends ComponentAbstract {
         
                                 // Add unique Id to swatch labels and inputs
                                 const labels = slideElem.querySelectorAll('label.form-option-swatch');
-                                if (labels.length) {
+                                if (labels.length && this.entryId) {
                                     for (let x = 0; x < labels.length; x++) {
                                         labels[x].setAttribute('for', `${this.entryId}_${labels[x].getAttribute('for')}`);
                                         labels[x].previousElementSibling.id = labels[x].getAttribute('for');

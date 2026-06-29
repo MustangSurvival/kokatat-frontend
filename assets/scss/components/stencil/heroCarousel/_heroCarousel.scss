@@ -161,6 +161,11 @@
 .heroCarousel-action {
     margin: 0;
 
+    &:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
+    }
+
     @include breakpoint("medium") {
         margin-top: spacing("single");
     }

@@ -112,6 +112,7 @@ export default class ContentfulLifeLandingPage extends ContentfulAbstract {
                                     if (componentInstance.validateFieldData(response.fields.image, 'asset')) {
                                         if (slideElem.querySelector('.about-post-image') !== null) {
                                             slideElem.querySelector('.about-post-image').src = response.fields.image.fields.file.url;
+                                            slideElem.querySelector('.about-post-image').alt = response.fields.image.fields.description || slideContent.title || '';
                                         }
                                     }
                                 });

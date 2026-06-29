@@ -33,9 +33,9 @@
                 {{#unless hide_product_quick_view}}
                     {{#if theme_settings.show_product_quick_view}}
                         {{#if settings.data_tag_enabled}}
-                            <a class="button button--small card-figcaption-button quickview" data-event-type="product-click" data-product-id="{{id}}">{{lang 'products.quick_view'}}</a>
+                            <a class="button button--small card-figcaption-button quickview" role="button" tabindex="0" data-event-type="product-click" data-product-id="{{id}}">{{lang 'products.quick_view'}}</a>
                         {{else}}
-                            <a class="button button--small card-figcaption-button quickview" data-product-id="{{id}}">{{lang 'products.quick_view'}}</a>
+                            <a class="button button--small card-figcaption-button quickview" role="button" tabindex="0" data-product-id="{{id}}">{{lang 'products.quick_view'}}</a>
                         {{/if}}
                     {{/if}}
                 {{/unless}}
