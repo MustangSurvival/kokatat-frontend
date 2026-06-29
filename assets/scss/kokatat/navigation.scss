@@ -22,6 +22,17 @@
         pointer-events: auto;
     }
 
+    .navProducts-item--cta {
+        align-self: stretch;
+        width: 35%;
+
+        a {
+            pointer-events: auto;
+            position: relative;
+            z-index: 2;
+        }
+    }
+
     .nav-header {
         width: 25%;
     }
@@ -66,18 +77,13 @@
             }
             .cta-block {
                 display: flex;
-                width: 35%;
-                height: 35%;
+                width: 100%;
+                height: 400px;
                 background-size: cover;
                 background-position: bottom;
                 background-repeat: no-repeat;
                 align-items: center;
                 justify-content: center;
-                &:after {
-                    content: '';
-                    display: block;
-                    padding-bottom: 100%;
-                }
             }
             .nav-image {
                 display: flex;
