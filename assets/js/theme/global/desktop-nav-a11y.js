@@ -33,7 +33,13 @@ export default function desktopNavA11y() {
 
         $trigger.attr('aria-expanded', false);
 
-        $item.on('mouseenter focusin', () => {
+        $item.on('mouseenter', () => {
+            $navItems.not(item).find(':focus').trigger('blur');
+            clearForcedClosedState($item);
+            setExpanded($item, true);
+        });
+
+        $item.on('focusin', () => {
             clearForcedClosedState($item);
             setExpanded($item, true);
         });
