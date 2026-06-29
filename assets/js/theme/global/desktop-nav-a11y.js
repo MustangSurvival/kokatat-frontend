@@ -1,13 +1,15 @@
 const navItemSelector = '.navUser-item.shop, .navUser-item.pages';
 const navTriggerSelector = '.navUser-action[role="button"], .navUser-action[aria-haspopup="true"]';
 const forcedClosedClass = 'is-forced-closed';
+const expandedClass = 'is-nav-expanded';
 
 function setExpanded($item, isExpanded) {
     $item.children(navTriggerSelector).attr('aria-expanded', isExpanded);
+    $item.toggleClass(expandedClass, isExpanded);
 }
 
 function isExpanded($item) {
-    return $item.children(navTriggerSelector).attr('aria-expanded') === 'true';
+    return $item.hasClass(expandedClass);
 }
 
 function clearForcedClosedState($item) {
@@ -34,7 +36,7 @@ export default function desktopNavA11y() {
         $trigger.attr('aria-expanded', false);
 
         $item.on('mouseenter', () => {
-            $navItems.not(item).find(':focus').trigger('blur');
+            $navItems.not(item).each((_, other) => setExpanded($(other), false));
             clearForcedClosedState($item);
             setExpanded($item, true);
         });

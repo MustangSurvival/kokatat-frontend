@@ -116,7 +116,7 @@
         }
 
         &:hover,
-        &:focus-within {
+        &.is-nav-expanded {
             .navUser-action {
                 padding-left: 10rem;
             }
@@ -141,7 +141,7 @@
         }
 
         &:hover,
-        &:focus-within {
+        &.is-nav-expanded {
             > .navDropdown {
                 display: block;
                 position: absolute;
