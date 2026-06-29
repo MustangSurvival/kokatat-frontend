@@ -118,7 +118,7 @@
         &:hover,
         &.is-nav-expanded {
             .navUser-action {
-                transform: translateX(10rem);
+                padding-left: 10rem;
             }
             > .navProducts {
                 display: block;
