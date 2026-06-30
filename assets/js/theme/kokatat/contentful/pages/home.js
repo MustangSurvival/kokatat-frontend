@@ -59,7 +59,7 @@ export default class ContentfulHomePage extends ContentfulAbstract {
                         slider.find('.slick-slide:not([aria-hidden="true"])').find('a, button, input, [tabindex]').each(function () { $(this).removeAttr('tabindex'); });
                     };
                     $heroCarousel
-                        .on('init afterChange', (e, slick) => syncHeroTabindex($(slick.$slider)))
+                        .on('init afterChange setPosition', (e, slick) => syncHeroTabindex($(slick.$slider)))
                         .slick({
                         arrows: true,
                         mobileFirst: true,

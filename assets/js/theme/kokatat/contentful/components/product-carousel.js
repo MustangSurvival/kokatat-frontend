@@ -34,7 +34,7 @@ export default class ProductCarousel extends ComponentAbstract {
 
             const productCarousel = $(templateInstance.querySelector('.product-slider'))
                 .on('init', (event, slick) => { syncSlideTabindex($(slick.$slider)); initSlideRoles($(slick.$slider)); })
-                .on('afterChange', (event, slick) => syncSlideTabindex($(slick.$slider)))
+                .on('afterChange setPosition', (event, slick) => syncSlideTabindex($(slick.$slider)))
                 .slick({
                 dots: false,
                 arrows: false,

@@ -52,7 +52,7 @@ export default class FeaturedBlogPost extends ComponentAbstract {
                         });
                     }
                     const productCarousel = $(templateInstance.querySelector('.product-img-carousel'))
-                        .on('init afterChange', (event, slick) => syncSlideTabindex($(slick.$slider)))
+                        .on('init afterChange setPosition', (event, slick) => syncSlideTabindex($(slick.$slider)))
                         .slick({
                         dots: false,
                         arrows: true,

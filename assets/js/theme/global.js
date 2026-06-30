@@ -15,6 +15,7 @@ import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
 import objectFitImages from './global/object-fit-polyfill';
 import { swatchToolTip, hideLinks } from './kokatat/global';
+import a11yIframeFix from './global/a11y-iframe-fix';
 import './kokatat/pdp';
 // import ContentfulEnvironment from './kokatat/contentful/contentful-env';
 import ContentfulHomePage from './kokatat/contentful/pages/home';
@@ -56,6 +57,7 @@ export default class Global extends PageManager {
         objectFitImages();
         swatchToolTip();
         hideLinks();
+        a11yIframeFix();
         const _tmpl = this.context.template;
         const _tmplKey = _tmpl.split(/[/\\]/).pop();
         switch (_tmplKey) {

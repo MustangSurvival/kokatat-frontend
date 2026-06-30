@@ -57,7 +57,7 @@ export default function (context) {
         $carousel.on('click', '.slick-arrow, .slick-dots', setCarouselState);
 
         $carousel.on('init breakpoint', (e, carouselObj) => activatePlayPauseButton(e, carouselObj, context));
-        $carousel.on('init afterChange', (e, carouselObj) => onSlickCarouselChange(e, carouselObj, context));
+        $carousel.on('init afterChange setPosition', (e, carouselObj) => onSlickCarouselChange(e, carouselObj, context));
         $carousel.on('click', '.slick-arrow, .slick-dots', $carousel, e => onUserCarouselChange(e, context));
         $carousel.on('swipe', (e, carouselObj) => onUserCarouselChange(e, context, carouselObj.$slider));
 
