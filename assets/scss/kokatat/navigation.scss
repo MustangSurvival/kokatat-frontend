@@ -5,6 +5,9 @@
     left: 0;
     right: 0;
     display: none;
+    @include breakpoint("medium") {
+        top: 100%;
+    }
 }
 .navProducts {
     box-shadow: 0px 0px 5px #bababa;

@@ -48,14 +48,14 @@ export default function desktopNavA11y() {
 
         $item.on('focusout', () => {
             window.setTimeout(() => {
-                if (!$item.contains(document.activeElement)) {
+                if (!$item[0].contains(document.activeElement)) {
                     setExpanded($item, false);
                 }
             }, 0);
         });
 
         $item.on('mouseleave', () => {
-            if (!$item.contains(document.activeElement)) {
+            if (!$item[0].contains(document.activeElement)) {
                 setExpanded($item, false);
             }
         });
