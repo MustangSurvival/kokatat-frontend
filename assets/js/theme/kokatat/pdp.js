@@ -62,6 +62,27 @@ function initSlickSliderMobile() {
 }
 initSlickSliderMobile();
 
+function stabilizeDesktopThumbnailRail() {
+    const refreshThumbRail = () => {
+        const $thumbRail = $('.productView-thumbnails.slick-initialized');
+        if ($thumbRail.length) {
+            $thumbRail.slick('setPosition');
+        }
+    };
+
+    // After all async content/fonts/images settle, re-measure slick dimensions.
+    $(window).on('load', () => {
+        refreshThumbRail();
+        window.setTimeout(refreshThumbRail, 250);
+    });
+
+    $(window).on('resize orientationchange', () => {
+        refreshThumbRail();
+    });
+}
+
+stabilizeDesktopThumbnailRail();
+
 // ADA
 function addSwatchLabels() {
     $('.form-option-variant--color').each(function () {

@@ -75,53 +75,7 @@ export default class Product extends PageManager {
             this.customSuit = new CustomSuit(this.context);
             initializeUI(this.customSuit);
         } else {
-            // Inventory messaging
             this.context.variantData = [];
-            fetch('/graphql', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${this.context.storefrontToken}`,
-                },
-                body: JSON.stringify({
-                    query: ` query SingleProduct {
-                        site {
-                            products (entityIds: [${this.context.productData.id}]) {
-                            edges {
-                                node {
-                                    id
-                                    entityId
-                                    name
-                                    variants {
-                                            edges {
-                                                node{
-                                                    entityId
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }`,
-                }),
-            })
-                .then(response => response.json())
-                .then(variantData => {
-                    const variantIds = [];
-                    const storeHash = this.context.storeHash;
-                    if (variantData.data && typeof variantData.data.site.products.edges[0].node.variants.edges !== 'undefined' && variantData.data.site.products.edges[0].node.variants.edges.length) {
-                        for (let i = 0; i < variantData.data.site.products.edges[0].node.variants.edges.length; i++) {
-                            variantIds.push(variantData.data.site.products.edges[0].node.variants.edges[i].node.entityId);
-                        }
-                    }
-                    return fetch(encodeURI(`https://kokatat.knect.io/inventory-items?variants=${variantIds.join('|')}&store_id=${storeHash}`));
-                })
-                .then(response => response.json())
-                .then(inventoryData => {
-                    this.context.variantData = inventoryData;
-                    $('[data-product-option-change]').first().change();
-                });
         }
 
         // Contentful Contentful

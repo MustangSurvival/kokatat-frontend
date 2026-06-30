@@ -298,6 +298,23 @@ export default class ProductDetails {
 
             const mainImageSrcset = utils.tools.imageSrcset.getSrcset(image.data);
 
+            const isAttributeRuleImage = [mainImageUrl, zoomImageUrl, mainImageSrcset]
+                .filter(Boolean)
+                .some((value) => String(value).includes('/attribute_rule_images/'));
+
+            if (isAttributeRuleImage) {
+                const $fallbackGalleryItem = this.$scope.find('[data-image-gallery-item]').first();
+
+                if ($fallbackGalleryItem.length) {
+                    this.imageGallery.setAlternateImage({
+                        mainImageUrl: $fallbackGalleryItem.attr('data-image-gallery-new-image-url'),
+                        zoomImageUrl: $fallbackGalleryItem.attr('data-image-gallery-zoom-image-url'),
+                        mainImageSrcset: $fallbackGalleryItem.attr('data-image-gallery-new-image-srcset'),
+                    });
+                    return;
+                }
+            }
+
             this.imageGallery.setAlternateImage({
                 mainImageUrl,
                 zoomImageUrl,
