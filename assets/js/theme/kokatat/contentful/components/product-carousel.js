@@ -97,7 +97,17 @@ export default class ProductCarousel extends ComponentAbstract {
                         .then((res) => res.json())
                         .then((data) => data.data.site.product != null ? data.data.site.product.entityId : null)
                         .then((data) => {
+                            if (data == null) {
+                                console.warn(`ProductCarousel: no product found for SKU "${this.fieldData[i]}", skipping related product slide`);
+                                return;
+                            }
+
                             utils.api.product.getById(data, { template: 'products/ajax-card' }, (err, response) => {
+                                if (err || !response) {
+                                    console.warn(`ProductCarousel: failed to load related product ${data}, skipping slide`, err);
+                                    return;
+                                }
+
                                 const slideElem = document.createElement('div');
                                 slideElem.innerHTML = `<div class="product">${response}</div>`;
                                 productCarousel.slick('slickAdd', slideElem);
